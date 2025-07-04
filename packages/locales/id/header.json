@@ -1,0 +1,10 @@
+{
+    "greetings": "Selamat Datang",
+    "profile": "Profil",
+    "changePassword": "Ubah Password",
+    "logout": "Keluar",
+    "language": {
+        "english": "English",
+        "indonesian": "Bahasa Indonesia"
+    }
+}

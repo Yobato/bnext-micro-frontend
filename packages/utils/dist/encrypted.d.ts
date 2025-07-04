@@ -1,0 +1,9 @@
+export declare const encryptData: (data: string) => any;
+export declare const decryptData: (encryptedData: string) => any;
+export declare const setUserInfo: (userInfo: object) => void;
+export declare const getUserInfo: () => any;
+export declare const setSession: () => void;
+export declare const getSession: () => any;
+export declare const updateSession: () => void;
+export declare const clearSession: () => void;
+//# sourceMappingURL=encrypted.d.ts.map

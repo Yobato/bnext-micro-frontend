@@ -1,0 +1,57 @@
+@media screen{
+    .print-container{
+        display: none;
+    }
+}
+
+@media print{
+    .print-container{
+        display: block !important;
+    }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .text-center {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .border-b {
+    border-bottom: 1px solid #000;
+    margin: 10px 0;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .print-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .button-print {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-print:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,25 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      "composite": true,
+      "declaration": true,
+      "declarationMap": true,
+      "emitDeclarationOnly": false,
+      "outDir": "dist",
+      "rootDir": ".",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "jsx": "react-jsx"
+    },
+    "include": [
+      "**/*.ts",
+      "**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist",
+      "**/*.test.ts",
+      "**/*.test.tsx"
+    ]
+  }
+  

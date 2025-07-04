@@ -1,0 +1,23 @@
+{
+  "name": "@bnext/ui",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./styles/*": "./styles/*"
+  },
+  "files": [
+    "index.ts",
+    "styles",
+    "components"
+  ],
+  "dependencies": {
+    "i18next": "^25.2.1",
+    "primeflex": "^4.0.0",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.6",
+    "react": "^19.1.0",
+    "react-i18next": "^15.5.3",
+    "yup": "^1.6.1"
+  }
+}

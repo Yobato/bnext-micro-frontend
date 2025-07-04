@@ -1,0 +1,109 @@
+@media screen and (min-width: 911px) and (max-width: 1024px) {
+    .box {
+        max-width: 455px;
+    }
+}
+
+@media screen and (min-width: 886px) and (max-width: 963px) {
+    .box {
+        width: 369px
+    }
+}
+
+@media screen and (min-width: 430px) and (max-width: 885px) {
+    .containers {
+        padding: 50px;
+    }
+
+    .rows {
+        display: block;
+    }
+
+    .box {
+        width: auto;
+        margin-bottom: 30px;
+    }
+
+    .col1 {
+        order: 1
+    }
+
+    .col2 {
+        order: 2
+    }
+
+    .login-page {
+        margin-bottom: 50px;
+        padding: 60px 40px 50px 40px;
+        min-width: 0px;
+    }
+
+    .logo {
+        margin-bottom: 30px;
+    }
+
+    .appsName {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 253px) and (max-width: 430px) {
+    .containers {
+        padding: 20px;
+    }
+
+    .rows {
+        display: block;
+    }
+
+    .box {
+        width: auto;
+        margin-bottom: 50px;
+    }
+
+    .col1 {
+        order: 1
+    }
+
+    .col2 {
+        order: 2
+    }
+
+    .login-page {
+        margin-bottom: 50px;
+        padding: 30px 20px;
+        min-width: 0px;
+    }
+
+    .logo {
+        width: 140px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .appsName {
+        text-align: center;
+    }
+
+    .title {
+        margin-bottom: 25px;
+    }
+
+    .info {
+        margin-top: 0px;
+    }
+
+    .ldap {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 252px) {
+    .containers {
+        display: none;
+    }
+
+    .no-support {
+        display: block;
+    }
+}

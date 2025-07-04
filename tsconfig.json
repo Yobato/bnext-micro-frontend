@@ -1,0 +1,27 @@
+{
+    "files": [],
+    "references": [
+      { "path": "packages/ui" },
+      { "path": "packages/lib" },
+      { "path": "packages/context" },
+      { "path": "packages/utils" },
+      { "path": "packages/locales" },
+      { "path": "packages/types" },
+      { "path": "packages/shared-wrappers" }
+    ],
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@bnext/ui": ["packages/ui"],
+        "@bnext/ui/*": ["packages/ui/*"],
+        "@bnext/lib/*": ["packages/lib/*"],
+        "@bnext/utils": ["packages/utils/dist"],
+        "@bnext/utils/*": ["packages/utils/dist/*"],
+        "@bnext/context/*": ["packages/context/dist/*"],
+        "@bnext/locales/*": ["packages/locales/*"],
+        "@bnext/types/*": ["packages/types/dist/*"],
+        "@bnext/shared-wrappers": ["packages/shared-wrappers/dist/*"],
+      }
+    }
+  }
+  

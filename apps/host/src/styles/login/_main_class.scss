@@ -1,0 +1,153 @@
+.containers {
+    padding: 10dvh 60px;
+}
+
+.rows {
+    display: flex;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 200px;
+}
+
+.sublogo {
+    width: 100px
+}
+
+.ldap {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.cols {
+    display: grid;
+}
+
+.col1 {
+    order: 2;
+    margin-left: auto;
+}
+
+.col2 {
+    order: 1;
+}
+
+.bg-green {
+    background: $green;
+}
+
+// -------------- login page
+.login-page {
+    padding: 70px 40px 100px 40px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #c8c8c8;
+    border-radius: 20px;
+    min-width: 380px;
+}
+
+.title {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.title > img {
+    margin-left: auto;
+}
+
+.field-login {
+    border: none;
+    border-bottom: 1px solid $green;
+
+    &:focus {
+        box-shadow: none;
+        border-bottom: 2px solid $green;
+    }
+}
+
+// password tidak bisa w-full
+.pass-me > .p-password {
+    width: 100%!important;
+}
+
+.pass-me > .p-password > .p-icon-field {
+    width: 100%!important;
+}
+
+.btn-login {
+    border: none;
+
+    &.p-button:focus {
+        box-shadow: none;
+    }
+
+    &:disabled {
+        background-color: $red;
+        cursor: not-allowed;
+    }
+}
+
+// -------------- information
+.bottom {
+    margin-top: auto;
+}
+
+.appsName > p {
+    font-size: 9pt;
+    font-weight: bolder;
+    line-height: 1.5;
+}
+
+.box {
+    margin-bottom: 20px;
+    width: 510px;
+    background: #fff;
+    border: 5px solid $green;
+    border-radius: 4px;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.box > ol {
+    margin: 0;
+    padding: 0;
+    margin-left: 18px;
+    line-height: 1.5;
+    font-size: 10pt;
+}
+
+.label {
+    position: absolute;
+    z-index: 1;
+    top: -35px;
+    left: 24px;
+    border: 5px solid $orange;
+    border-bottom: 5px solid $green;
+    padding: 4px 10px;
+    width: 130px;
+    background: #fff;
+    font-size: 11pt;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: $green;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.info {
+    margin-top: 20px;
+    height: 130px;
+}
+
+.data {
+    margin-left: 5px;
+    height: 100%;
+    overflow-y: auto;
+    font-size: 10pt;
+}
+
+.no-support {
+    display: none;
+    margin-top: 100px;
+}

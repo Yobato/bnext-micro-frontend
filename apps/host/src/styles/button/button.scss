@@ -1,0 +1,52 @@
+.custom-button {
+    border-radius: 15px 15px 0 0;
+    background-color: #00b8ae;
+    color: white;
+    margin: 0;
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+   
+    &.inactive {
+      background-color: #ebebeb;
+      color: #888;
+    }
+   
+    &:hover:not(.inactive) {
+      background-color: #008e87;
+    }
+  }
+
+.language-label {
+  font-family: "Inter var", sans-serif;
+  font-size: 12px;
+  // vertical-align: top;
+  vertical-align: middle;
+}
+
+.button-refresh {
+  background-color: transparent; /* Transparent background */
+  color: gray; /* Default text color */
+  border: none; /* Border to match the default color */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+ 
+  &:hover {
+    color: #008e87; /* White text on hover */
+  }
+ 
+  &:disabled {
+    color:#888;
+    cursor: not-allowed; /* Change cursor for disabled state */
+    
+  }
+}

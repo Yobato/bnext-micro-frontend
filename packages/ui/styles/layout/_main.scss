@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 14px;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--surface-ground);
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.layout-wrapper {
+    min-height: 100dvh;
+}
+
+.submit:disabled {
+    background-color: #f14040;
+}
+
+input:disabled, 
+input:read-only {
+    background-color: #1ba49d63;
+    border: 1px solid var(--bsi-primary);
+    color: #000;
+}
+
+.title-form {
+    font-weight: bold;
+    color: var(--bsi-primary);
+}
+
+.isLabel {
+    cursor: pointer;
+}
+
+.mandatory {
+    color: #f14040;
+    font-size: 5pt;
+    font-weight: bold;
+}
+
+.divider-title {
+    color: var(--bsi-primary)
+}
+
+.p-datepicker-title {
+    > .p-datepicker-month {
+        margin-right: 2.5rem;
+    }
+}

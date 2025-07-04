@@ -1,0 +1,10 @@
+{
+    "greetings": "Welcome",
+    "profile": "Profile",
+    "changePassword": "Change Password",
+    "logout": "Logout",
+    "language": {
+        "english": "English",
+        "indonesian": "Bahasa Indonesia"
+    }
+}
