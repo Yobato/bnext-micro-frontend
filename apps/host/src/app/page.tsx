@@ -4,10 +4,10 @@
 import Image from "next/image";
 // import Link from "next/link";
 // import FormLogin from "../../../../packages/ui/components/login/form";
-import FormLogin from "@bnext/ui/components/login/form";
-import "@bnext/ui/styles/login/layout.scss";
-import Info from "@bnext/ui/components/login/info";
-import NoSupport from "@bnext/ui/components/login/noSupport";
+import {FormLogin} from "@bnext/ui";
+import "@bnext/ui/src/styles/login/layout.scss";
+import {Info} from "@bnext/ui";
+import {NoSupport} from "@bnext/ui";
 
 // import Header from "@bnext/ui/components/HeaderRefactor";
 

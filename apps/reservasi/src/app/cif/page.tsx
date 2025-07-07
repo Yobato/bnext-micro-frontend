@@ -1,15 +1,13 @@
 "use client";
 import React from "react";
 import { useToast } from "@bnext/context";
-import { Table } from "@bnext/ui";
 // import Image from "next/image";
 
-export default function Home() {
+export default function CIF() {
 //   const { globalOnSuccess, globalOnError } = useToast();
   return (
     <>
-        <h5>Reservasi</h5>
-        <Table></Table>
+        <h1>CIF</h1>
     </>
   );
 }

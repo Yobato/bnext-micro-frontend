@@ -1,25 +1,22 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": false,
-    "outDir": "dist",
-    "rootDir": ".",
-    "jsx": "react-jsx",
-    "typeRoots": ["./types", "../../node_modules/@types"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.test.tsx"
-  ]
-}
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+      "target": "ES2020",
+      "lib": ["DOM", "DOM.Iterable", "ES2020"],
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "jsx": "react-jsx",
+      "rootDir": "src",
+      "outDir": "dist",
+      "declaration": true,
+      "declarationMap": true,
+      "composite": true,
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "types": ["react", "react-dom"]
+    },
+    "include": ["src"],
+    "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.test.tsx"]
+  }
+  

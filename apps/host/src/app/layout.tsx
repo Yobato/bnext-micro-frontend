@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import "@bnext/ui/styles/layout/layout.scss";
-import "@bnext/ui/styles/demo/Demos.scss";
+import "@bnext/ui/src/styles/layout/layout.scss";
+import "@bnext/ui/src/styles/demo/Demos.scss";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import { PrimeReactProvider } from "primereact/api";
 import { LayoutProvider } from "@bnext/context";
 
 
-import "@bnext/ui/styles/lara-light-indigo/theme.css";
+import "@bnext/ui/src/styles/lara-light-indigo/theme.css";
 // import "@bnext/ui/styles/globals.css"
 
 export const metadata: Metadata = {
