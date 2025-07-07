@@ -9,4 +9,5 @@ export { default as NoSupport } from './src/components/auth/noSupport';
 export { default as Header } from './src/components/layout/Header';
 export { default as Footer } from './src/components/layout/Footer';
 export { default as Sidebar } from './src/components/layout/Sidebar';
-export { default as Table } from './src/components/common/Table'
+export { default as Table } from './src/components/common/Table';
+export { default as Pagination } from './src/components/common/Pagination';
