@@ -11,3 +11,6 @@ export { default as Footer } from './src/components/layout/Footer';
 export { default as Sidebar } from './src/components/layout/Sidebar';
 export { default as Table } from './src/components/common/Table';
 export { default as Pagination } from './src/components/common/Pagination';
+
+// Export constant
+export { menuRaw } from './src/constants/menu';

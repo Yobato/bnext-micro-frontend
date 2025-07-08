@@ -4,12 +4,12 @@ import { useToast } from "@bnext/context";
 import { Table } from "@bnext/ui";
 // import Image from "next/image";
 
-export default function Home() {
-//   const { globalOnSuccess, globalOnError } = useToast();
+export default function Search() {
+  //   const { globalOnSuccess, globalOnError } = useToast();
   return (
     <>
-        <h5>Reservasi</h5>
-        <Table></Table>
+      <h5>Reservasi</h5>
+      <Table></Table>
     </>
   );
 }

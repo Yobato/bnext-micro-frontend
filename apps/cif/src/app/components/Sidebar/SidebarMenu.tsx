@@ -43,13 +43,12 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
     return null;
   };
 
-  // const activeHref = findActiveHref(menu.flatMap((group) => group.items));
-  // const isActive = (href?: string) => href === activeHref;
+  const activeHref = findActiveHref(menu.flatMap((group) => group.items));
   const isActive = (item: MenuItem) => {
-    if(!item.href) return false;
+    if (!item.href) return false;
     const itemZone = (item as any).zone;
     return pathname === item.href && itemZone === currentZone;
-  }
+  };
 
   const ZONE_ORIGINS = {
     cif: "http://localhost:3002",

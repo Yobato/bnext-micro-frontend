@@ -4,10 +4,10 @@ import { Sidebar } from "@bnext/ui";
 import Link from "next/link";
 import React from "react";
 import SidebarMenu from "../components/Sidebar/SidebarMenu";
-import { resolveMenu } from "@bnext/utils";
+import { resolveMenu } from "@bnext/utils" 
 // import { SessionProvider } from "@bnext/context";
 
-const menuReservasi = resolveMenu(menuRaw, "reservasi");
+const menuCif = resolveMenu(menuRaw, "cif");
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -16,7 +16,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <Header></Header>
       <div className="layout-sidebar">
         <Sidebar>
-          <SidebarMenu menu={menuReservasi} currentZone="reservasi" />
+          <SidebarMenu
+            menu={menuCif} currentZone="cif"
+          />
         </Sidebar>
       </div>
       <div className="layout-main-container">

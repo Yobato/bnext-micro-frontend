@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       {
         source: '/reservasi/:path*',
         destination: 'http://localhost:3001/reservasi/:path*'
-      }
+      },
       // Redirect ke dashboard zone
       // {
       //   source: '/dashboard',

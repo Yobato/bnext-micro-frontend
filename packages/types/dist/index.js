@@ -19,3 +19,4 @@ __exportStar(require("./formData"), exports);
 __exportStar(require("./customerData"), exports);
 __exportStar(require("./masterData"), exports);
 __exportStar(require("./paramsData"), exports);
+__exportStar(require("./menu"), exports);

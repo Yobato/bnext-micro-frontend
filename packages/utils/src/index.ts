@@ -7,5 +7,6 @@ export * from './exsistService';
 export * from './globalHelper';
 export * from './masterdataService';
 export * from './settingService';
+export {resolveMenu} from './menuResolver';
 
 
