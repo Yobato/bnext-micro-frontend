@@ -1,0 +1,1 @@
+{"version":3,"file":"ErrorTimeout.d.ts","sourceRoot":"","sources":["../../../src/components/common/ErrorTimeout.tsx"],"names":[],"mappings":"AACA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,UAAU,iBAAiB;IACzB,OAAO,CAAC,EAAE,MAAM,CAAC;CAClB;AAED,QAAA,MAAM,YAAY,EAAE,KAAK,CAAC,EAAE,CAAC,iBAAiB,CAoC7C,CAAC;AAEF,OAAO,EAAE,YAAY,EAAE,CAAC"}
