@@ -15,7 +15,8 @@
     "primereact": "^10.9.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
