@@ -23,3 +23,4 @@ export { menuRaw } from './src/constants/menu';
 // Export form
 export { useForm } from './src/components/forms/useForm';
 export { default as InputTextField } from './src/components/forms/fields/InputTextField';
+export { default as InputCurrencyField } from './src/components/forms/fields/InputCurrencyField'
