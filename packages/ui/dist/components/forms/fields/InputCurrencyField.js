@@ -10,6 +10,10 @@ const formatToIDR = (value) => {
         return "";
     return `Rp${numeric.toLocaleString("id-ID")}`;
 };
+// FUNGSI KONVERT STRING KE NUMERIC
+// function parseCurrencyString(str: string): number {
+//   return parseInt(str.replace(/\D/g, ""), 10);
+// }
 const InputCurrencyField = ({ name, label, value, onChange, onBlur, error, required = false, disabled = false, placeholder, isHidden = false, autoComplete = "on", maxLength, tabIndex, }) => {
     const handleInputChange = (e) => {
         const raw = e.target.value;
