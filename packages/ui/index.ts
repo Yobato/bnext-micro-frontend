@@ -27,4 +27,5 @@ export { default as InputCurrencyField } from './src/components/forms/fields/Inp
 export { default as SelectDropdownField } from './src/components/forms/fields/SelectDropdownField'
 export { default as ToggleField } from './src/components/forms/fields/ToggleField'
 export { default as CheckboxField } from './src/components/forms/fields/CheckboxField'
+export { default as MultiSelectField } from './src/components/forms/fields/MultiSelectField'
 

@@ -7,10 +7,17 @@ import {
   SelectDropdownField,
   ToggleField,
   CheckboxField,
+  MultiSelectField,
 } from "@bnext/ui";
 import * as Yup from "yup";
 
 export default function Search() {
+  const projectsOptions = [
+    { label: "Landing Page Consumer", value: "LPC" },
+    { label: "EXA", value: "EXA" },
+    { label: "XPAN", value: "XPAN" },
+  ];
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Nama wajib diisi"),
     email: Yup.string().email().required("Email wajib diisi"),
@@ -21,6 +28,7 @@ export default function Search() {
       [true],
       "**Anda harus menyetujui syarat dan ketentuan"
     ),
+    projects: Yup.array().min(1, "Minimal pilih satu projects"),
   });
 
   const { formData, errors, handleChange, handleSubmit, handleBlur } = useForm({
@@ -31,6 +39,7 @@ export default function Search() {
       category: null,
       active: false,
       terms: false,
+      projects: [],
     },
     validationSchema,
     onSubmit: (data) => {
@@ -98,6 +107,14 @@ export default function Search() {
           required
           onLabel="Aktif"
           offLabel="Tidak Aktif"
+        />
+        <MultiSelectField
+          name="categories"
+          label="Kategori Artikel"
+          value={formData.projects}
+          options={projectsOptions}
+          onChange={handleChange("projects")}
+          error={errors.projects}
         />
         <CheckboxField
           name="terms"
