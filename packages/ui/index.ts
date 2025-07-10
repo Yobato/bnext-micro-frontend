@@ -23,9 +23,10 @@ export { menuRaw } from './src/constants/menu';
 // Export form
 export { useForm } from './src/components/forms/useForm';
 export { default as InputTextField } from './src/components/forms/fields/InputTextField';
-export { default as InputCurrencyField } from './src/components/forms/fields/InputCurrencyField'
-export { default as SelectDropdownField } from './src/components/forms/fields/SelectDropdownField'
-export { default as ToggleField } from './src/components/forms/fields/ToggleField'
-export { default as CheckboxField } from './src/components/forms/fields/CheckboxField'
-export { default as MultiSelectField } from './src/components/forms/fields/MultiSelectField'
+export { default as InputCurrencyField } from './src/components/forms/fields/InputCurrencyField';
+export { default as SelectDropdownField } from './src/components/forms/fields/SelectDropdownField';
+export { default as ToggleField } from './src/components/forms/fields/ToggleField';
+export { default as CheckboxField } from './src/components/forms/fields/CheckboxField';
+export { default as MultiSelectField } from './src/components/forms/fields/MultiSelectField';
+export { default as InputMaskField } from './src/components/forms/fields/InputMaskField';
 

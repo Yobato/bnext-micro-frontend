@@ -8,6 +8,7 @@ import {
   ToggleField,
   CheckboxField,
   MultiSelectField,
+  InputMaskField,
 } from "@bnext/ui";
 import * as Yup from "yup";
 
@@ -20,6 +21,7 @@ export default function Search() {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Nama wajib diisi"),
+    phone: Yup.string().required("Phone wajib diisi"),
     email: Yup.string().email().required("Email wajib diisi"),
     price: Yup.string().required("Price wajib diisi"),
     category: Yup.string().required("Category wajib diisi"),
@@ -34,6 +36,7 @@ export default function Search() {
   const { formData, errors, handleChange, handleSubmit, handleBlur } = useForm({
     initialValue: {
       name: "",
+      phone: "",
       email: "",
       price: "",
       category: null,
@@ -63,6 +66,17 @@ export default function Search() {
           onBlur={() => handleBlur("name")}
           error={errors.name}
           maxLength={60}
+          required
+        />
+        <InputMaskField
+          name="npwp"
+          label="NPWP"
+          value={formData.phone}
+          onChange={handleChange("phone")}
+          error={errors.phone}
+          required
+          placeholder="+62-8xx-xxxx-xxxx"
+          mask="+99-999-9999-9999"
         />
         {/* {errors.name && <small className="p-error">{errors.name}</small>} */}
         <InputTextField
