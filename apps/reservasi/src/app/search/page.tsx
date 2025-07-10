@@ -9,6 +9,8 @@ import {
   CheckboxField,
   MultiSelectField,
   InputMaskField,
+  InputNumberField,
+  CalendarField,
 } from "@bnext/ui";
 import * as Yup from "yup";
 
@@ -22,6 +24,7 @@ export default function Search() {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Nama wajib diisi"),
     phone: Yup.string().required("Phone wajib diisi"),
+    birthDate: Yup.date().required("Tanggal lahir wajib diisi"),
     email: Yup.string().email().required("Email wajib diisi"),
     price: Yup.string().required("Price wajib diisi"),
     category: Yup.string().required("Category wajib diisi"),
@@ -31,18 +34,24 @@ export default function Search() {
       "**Anda harus menyetujui syarat dan ketentuan"
     ),
     projects: Yup.array().min(1, "Minimal pilih satu projects"),
+    orders: Yup.number()
+      .required("Wajib order min 1")
+      .min(1, "Minimal order adalah 1")
+      .max(100, "Maksimal order adalah 100"),
   });
 
   const { formData, errors, handleChange, handleSubmit, handleBlur } = useForm({
     initialValue: {
       name: "",
       phone: "",
+      birthDate: null,
       email: "",
       price: "",
       category: null,
       active: false,
       terms: false,
       projects: [],
+      orders: 0,
     },
     validationSchema,
     onSubmit: (data) => {
@@ -69,8 +78,8 @@ export default function Search() {
           required
         />
         <InputMaskField
-          name="npwp"
-          label="NPWP"
+          name="phone"
+          label="Phone"
           value={formData.phone}
           onChange={handleChange("phone")}
           error={errors.phone}
@@ -79,6 +88,14 @@ export default function Search() {
           mask="+99-999-9999-9999"
         />
         {/* {errors.name && <small className="p-error">{errors.name}</small>} */}
+        <CalendarField
+          name="birthDate"
+          label="Tanggal Lahir"
+          value={formData.birthDate}
+          onChange={handleChange("birthDate")}
+          onBlur={() => handleBlur("birthDate")}
+          error={errors.birthDate}
+        />
         <InputTextField
           name="email"
           label="Email"
@@ -129,6 +146,17 @@ export default function Search() {
           options={projectsOptions}
           onChange={handleChange("projects")}
           error={errors.projects}
+        />
+        <InputNumberField
+          name="orders"
+          label="Jumlah Order"
+          value={formData.orders}
+          onChange={handleChange("orders")}
+          error={errors.orders}
+          required
+          min={0}
+          max={100}
+          step={1}
         />
         <CheckboxField
           name="terms"

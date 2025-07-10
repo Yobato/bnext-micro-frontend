@@ -29,4 +29,6 @@ export { default as ToggleField } from './src/components/forms/fields/ToggleFiel
 export { default as CheckboxField } from './src/components/forms/fields/CheckboxField';
 export { default as MultiSelectField } from './src/components/forms/fields/MultiSelectField';
 export { default as InputMaskField } from './src/components/forms/fields/InputMaskField';
+export { default as InputNumberField } from './src/components/forms/fields/InputNumberField';
+export { default as CalendarField } from './src/components/forms/fields/CalendarField';
 
