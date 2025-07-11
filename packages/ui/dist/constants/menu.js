@@ -37,6 +37,12 @@ export const menuRaw = [
                         external: true
                     },
                     {
+                        label: "Formulir Uji Coba",
+                        icon: "pi pi-copy",
+                        path: "{reservasi}/form",
+                        external: true
+                    },
+                    {
                         label: "Report Reservasi",
                         icon: "pi pi-copy",
                         path: "{reservasi}/report",

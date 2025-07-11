@@ -51,7 +51,7 @@ const InputTextField: React.FC<InputTextFieldProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
-        required={required}
+        // required={required}
         className={classNames({ "p-invalid": !!error })}
         disabled={disabled}
         placeholder={placeholder}

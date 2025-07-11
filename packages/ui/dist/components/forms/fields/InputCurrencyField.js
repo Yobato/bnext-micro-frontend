@@ -20,6 +20,8 @@ const InputCurrencyField = ({ name, label, value, onChange, onBlur, error, requi
         const parsed = raw.replace(/[^\d]/g, "");
         onChange(parsed);
     };
-    return (_jsxs("div", { className: isHidden ? "hidden" : "flex flex-column field", children: [_jsxs("label", { htmlFor: name, children: [label, required && (_jsx("sup", { children: _jsx("i", { className: "pi pi-asterisk mandatory" }) }))] }), _jsx(InputText, { id: name, name: name, value: formatToIDR(value), onChange: handleInputChange, onBlur: onBlur, required: required, className: classNames({ "p-invalid": !!error }), disabled: disabled, placeholder: placeholder, autoComplete: autoComplete, maxLength: maxLength, tabIndex: tabIndex }), error && _jsx("small", { className: "p-error", children: error })] }));
+    return (_jsxs("div", { className: isHidden ? "hidden" : "flex flex-column field", children: [_jsxs("label", { htmlFor: name, children: [label, required && (_jsx("sup", { children: _jsx("i", { className: "pi pi-asterisk mandatory" }) }))] }), _jsx(InputText, { id: name, name: name, value: formatToIDR(value), onChange: handleInputChange, onBlur: onBlur, 
+                // required={required}
+                className: classNames({ "p-invalid": !!error }), disabled: disabled, placeholder: placeholder, autoComplete: autoComplete, maxLength: maxLength, tabIndex: tabIndex }), error && _jsx("small", { className: "p-error", children: error })] }));
 };
 export default InputCurrencyField;

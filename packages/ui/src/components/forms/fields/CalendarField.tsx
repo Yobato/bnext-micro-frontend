@@ -47,7 +47,7 @@ const CalendarField: React.FC<CalendarFieldProps> = ({
         value={value}
         onChange={(e) => onChange(e.value ?? null)}
         onBlur={onBlur}
-        required={required}
+        // required={required}
         className={classNames({ "p-invalid": !!error })}
         disabled={disabled}
         placeholder={placeholder}

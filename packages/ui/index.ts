@@ -31,4 +31,9 @@ export { default as MultiSelectField } from './src/components/forms/fields/Multi
 export { default as InputMaskField } from './src/components/forms/fields/InputMaskField';
 export { default as InputNumberField } from './src/components/forms/fields/InputNumberField';
 export { default as CalendarField } from './src/components/forms/fields/CalendarField';
+export { default as RadioGroupField } from './src/components/forms/fields/RadioGroupField';
+
+export { createSchema } from './src/components/forms/validation/createSchema';
+export {default as RootForm} from './src/components/forms/RootForm';
+export type {FieldConfig} from './src/components/forms/validation/FieldConfig';
 

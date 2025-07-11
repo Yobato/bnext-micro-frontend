@@ -30,7 +30,7 @@ const CheckboxField: React.FC<CheckboxFieldProps> = ({
         name={name}
         checked={checked}
         onChange={(e: CheckboxChangeEvent) => onChange(e.checked ?? false)}
-        required={required}
+        // required={required}
         disabled={disabled}
         className={classNames({ "p-invalid": !!error })}
       />

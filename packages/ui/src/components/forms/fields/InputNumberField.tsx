@@ -52,7 +52,7 @@ const InputNumberField: React.FC<InputNumberFieldProps> = ({
         onValueChange={(e) => onChange(e.value ?? null)}
         className={classNames({ "p-invalid": !!error })}
         disabled={disabled}
-        required={required}
+        // required={required}
         placeholder={placeholder}
         min={min}
         max={max}

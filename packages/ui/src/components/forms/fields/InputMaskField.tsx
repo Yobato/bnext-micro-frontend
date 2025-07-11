@@ -47,7 +47,7 @@ const InputMaskField: React.FC<InputMaskFieldProps> = ({
         placeholder={placeholder}
         disabled={disabled}
         className={classNames({ "p-invalid": !!error })}
-        required={required}
+        // required={required}
       ></InputMask>
       {error && <small className="p-error">{error}</small>}
     </div>
