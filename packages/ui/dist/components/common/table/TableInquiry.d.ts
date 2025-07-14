@@ -1,0 +1,1 @@
+//# sourceMappingURL=TableInquiry.d.ts.map

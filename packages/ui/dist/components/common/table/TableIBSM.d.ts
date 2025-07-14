@@ -1,0 +1,1 @@
+//# sourceMappingURL=TableIBSM.d.ts.map

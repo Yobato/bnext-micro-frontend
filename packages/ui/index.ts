@@ -14,8 +14,9 @@ export { default as Sidebar } from './src/components/layout/Sidebar';
 export { ErrorTimeout } from './src/components/common/ErrorTimeout';
 export { TableSkeleton, FormSkeleton, CardSkeleton } from './src/components/common/LoadingSkeleton';
 
-export { default as Table } from './src/components/common/Table';
+export { default as TableDefault } from './src/components/common/table/TableDefault';
 export { default as Pagination } from './src/components/common/Pagination';
+export type { ColumnProps } from './src/components/common/table/TableDefault'
 
 // Export constant
 export { menuRaw } from './src/constants/menu';

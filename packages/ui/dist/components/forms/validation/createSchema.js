@@ -12,6 +12,8 @@ export function createSchema(fields) {
                 schema = Yup.string();
                 break;
             case 'checkbox':
+                schema = Yup.boolean().oneOf([true], "**Bagian ini harus dicentang");
+                break;
             case 'checklist':
             case 'multiselect':
                 schema = Yup.array();
@@ -22,7 +24,7 @@ export function createSchema(fields) {
             case 'number':
                 schema = Yup.number()
                     .typeError(`${field.label} harus berupa angka`)
-                    .transform((value, originalValue) => String(originalValue).trim() === '' ? undefined : value);
+                    .transform((value, originalValue) => String(originalValue).trim() === '' ? undefined : value).min(1, `${field.label} wajib lebih dari 0`);
                 break;
             case 'toggle':
                 schema = Yup.boolean();
@@ -31,7 +33,12 @@ export function createSchema(fields) {
                 schema = Yup.mixed();
         }
         if (field.isRequired) {
-            schema = schema.required(`${field.label} wajib diisi`);
+            if (field.typeForm === 'multiselect') {
+                schema = Yup.array().min(1, `${field.label} wajib dipilih`);
+            }
+            else {
+                schema = schema.required(`${field.label} wajib diisi`);
+            }
         }
         shape[field.name] = schema;
     });

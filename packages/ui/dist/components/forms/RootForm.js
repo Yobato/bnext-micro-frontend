@@ -49,7 +49,7 @@ function RootForm({ fields, initialValue, onSubmit, }) {
             case "radio":
                 return (_jsx(RadioGroupField, { ...commonProps, options: field.optionData || [] }));
             case "checkbox":
-                return _jsx(CheckboxField, { ...commonProps, checked: field.checked });
+                return _jsx(CheckboxField, { ...commonProps, checked: formData[field.name] });
             case "select":
                 return (_jsx(SelectDropdownField, { ...commonProps, options: field.optionData || [] }));
             case "multiselect":
