@@ -1,0 +1,159 @@
+"use client";
+
+import React, { ReactNode } from "react";
+import { Button } from "primereact/button";
+import { Badge } from "primereact/badge";
+import BaseTable, { Column } from "./BaseTable";
+
+export interface ColumnProps {
+  header: string;
+  field: string;
+  template?: string;
+}
+
+export interface AddButtonProps {
+  visible: boolean;
+  onClick: () => void;
+}
+
+export interface PrintButtonProps {
+  visible: boolean;
+  onClick: () => void;
+}
+
+export interface ExportButtonProps {
+  visible: boolean;
+  onClick: () => void;
+}
+
+export interface SearchProps {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+}
+
+export interface Data {
+  [key: string]: any;
+}
+
+export interface DataResponse {
+  data: Data[];
+  totalItems: number;
+  totalPages: number;
+  currentPage: number;
+}
+
+interface TablePrintProps {
+  response: DataResponse;
+  columns: ColumnProps[];
+  addButton?: AddButtonProps;
+  printButton?: PrintButtonProps;
+  exportButton?: ExportButtonProps;
+  search?: SearchProps;
+  onEdit?: (event: React.MouseEvent<HTMLElement>, id: string) => void;
+  isLoading?: boolean;
+  pageSize: number;
+  onPageChange: (page: number) => void;
+  onPageSizeChange: (size: number) => void;
+}
+
+const isTemplate = (type: string, value: string): ReactNode => {
+  switch (type) {
+    case "badge":
+      const badgeType = value === "1" ? "success" : "danger";
+      const label = value === "1" ? "Active" : "Inactive";
+      return <Badge value={label} severity={badgeType} />;
+    default:
+      return value;
+  }
+};
+
+const TablePrint: React.FC<TablePrintProps> = ({
+  response,
+  columns,
+  addButton,
+  printButton,
+  exportButton,
+  search,
+  onEdit,
+  isLoading = false,
+  pageSize,
+  onPageChange,
+  onPageSizeChange,
+}) => {
+  const startItem = (response.currentPage - 1) * pageSize;
+
+  const renderToolbarLeft = () =>
+    search ? (
+      <input
+        type="text"
+        name="search"
+        id="search"
+        placeholder={search.placeholder || "Cari Data"}
+        className="p-inputtext p-component"
+        value={search.value}
+        onChange={(e) => search.onChange(e.target.value)}
+      />
+    ) : null;
+
+  const renderToolbarRight = () => (
+    <div className="flex flex-wrap gap-3">
+      {addButton?.visible && (
+        <Button
+          label="Buat Baru"
+          icon="pi pi-plus"
+          severity="success"
+          onClick={addButton.onClick}
+        />
+      )}
+      {printButton?.visible && (
+        <Button
+          label="Cetak"
+          icon="pi pi-print"
+          severity="info"
+          onClick={printButton.onClick}
+        />
+      )}
+      {exportButton?.visible && (
+        <Button
+          label="Export"
+          icon="pi pi-file-excel"
+          severity="help"
+          onClick={exportButton.onClick}
+        />
+      )}
+    </div>
+  );
+
+  const mapColumnsToBase = (columns: ColumnProps[]): Column[] => {
+    return columns.map((col) => ({
+      header: col.header,
+      accessor: col.field,
+      template: col.template
+        ? (value, row) => isTemplate(col.template!, value)
+        : undefined,
+    }));
+  };
+
+  return (
+    <BaseTable
+      variant="print"
+      columns={mapColumnsToBase(columns)}
+      data={response.data}
+      isLoading={isLoading}
+      onEdit={(item) => onEdit?.({} as any, item.id)}
+      renderToolbarLeft={renderToolbarLeft}
+      renderToolbarRight={renderToolbarRight}
+      paginationProps={{
+        totalRecords: response.totalItems,
+        currentPage: response.currentPage,
+        pageSize,
+        onPageChange,
+        onPageSizeChange,
+      }}
+      startItem={startItem}
+    />
+  );
+};
+
+export default TablePrint;

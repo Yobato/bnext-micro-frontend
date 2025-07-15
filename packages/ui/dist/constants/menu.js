@@ -31,19 +31,19 @@ export const menuRaw = [
                         external: true
                     },
                     {
-                        label: "Search Reservasi",
-                        icon: "pi pi-search",
-                        path: "{reservasi}/search",
-                        external: true
-                    },
-                    {
-                        label: "Formulir Uji Coba",
+                        label: "Formulir Selesai",
                         icon: "pi pi-copy",
                         path: "{reservasi}/form",
                         external: true
                     },
                     {
-                        label: "Report Reservasi",
+                        label: "Table Print",
+                        icon: "pi pi-search",
+                        path: "{reservasi}/search",
+                        external: true
+                    },
+                    {
+                        label: "Table Default",
                         icon: "pi pi-copy",
                         path: "{reservasi}/report",
                         external: true

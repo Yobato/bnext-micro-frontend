@@ -22,6 +22,6 @@ const Pagination = ({ currentPage, pageSize, totalRecords, onPageChange, onPageS
                     if (onPageSizeChange) {
                         onPageSizeChange(newSize);
                     }
-                }, children: [_jsx("option", { value: "10", children: "10" }), _jsx("option", { value: "15", children: "15" }), _jsx("option", { value: "20", children: "20" })] })] }));
+                }, children: [_jsx("option", { value: "5", children: "5" }), _jsx("option", { value: "10", children: "10" }), _jsx("option", { value: "15", children: "15" }), _jsx("option", { value: "20", children: "20" })] })] }));
 };
 export default Pagination;

@@ -22,6 +22,11 @@ interface TableDefaultProps {
     columns: ColumnProps[];
     addButton?: AddButtonProps;
     onEdit?: (event: React.MouseEvent<HTMLElement>, id: string) => void;
+    search?: {
+        value: string;
+        onChange: (v: string) => void;
+        placeholder?: string;
+    };
     onPageChange: (pageNum: number) => void;
     onPageSizeChange: (pageSize: number) => void;
     pageSize: number;
