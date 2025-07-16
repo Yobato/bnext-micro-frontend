@@ -75,7 +75,13 @@ const TableDefaultPage = () => {
           setCurrentPage(1);
         }}
         addButton={addButton}
-        search={{ value: query, onChange: setQuery }}
+        search={{
+          value: query,
+          onChange: (v) => {
+            setQuery(v);
+            setCurrentPage(1);
+          },
+        }}
       />
     </div>
   );

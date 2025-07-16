@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import {RootForm} from "@bnext/ui";
+import { RootForm } from "@bnext/ui";
 import { FieldConfig } from "@bnext/ui";
+import ClientOnly from "../components/Sidebar/ClientOnly";
 
 export default function SearchPage() {
   const projectsOptions = [
@@ -123,11 +124,13 @@ export default function SearchPage() {
         <div className="card p-fluid">
           <h6>My Form</h6>
           <hr />
-          <RootForm
-            fields={fields}
-            initialValue={initialValue}
-            onSubmit={handleSubmit}
-          />
+          <ClientOnly>
+            <RootForm
+              fields={fields}
+              initialValue={initialValue}
+              onSubmit={handleSubmit}
+            />
+          </ClientOnly>
         </div>
       </div>
     </div>

@@ -17,8 +17,10 @@ export { TableSkeleton, FormSkeleton, CardSkeleton } from './src/components/comm
 // Export component table
 export { default as TableDefault } from './src/components/common/table/TableDefault';
 export {default as TablePrint } from './src/components/common/table/TablePrint';
+export {default as TableIBSM} from './src/components/common/table/TableIBSM';
+export { default as TableInquiry } from './src/components/common/table/TableInquiry';
 export { default as Pagination } from './src/components/common/Pagination';
-export type { ColumnProps } from './src/components/common/table/TableDefault'
+export type { ColumnProps } from './src/components/common/table/TableDefault';
 
 // Export constant
 export { menuRaw } from './src/constants/menu';

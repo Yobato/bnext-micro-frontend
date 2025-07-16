@@ -18,6 +18,12 @@ export const menuRaw = [
                         path: "{cif}/search", // hasilnya: /cif/search
                         external: true
                     },
+                    {
+                        label: "Inquiry",
+                        icon: "pi pi-copy",
+                        path: "{cif}/inquiry",
+                        external: true
+                    },
                 ],
             },
             {
@@ -46,6 +52,12 @@ export const menuRaw = [
                         label: "Table Default",
                         icon: "pi pi-copy",
                         path: "{reservasi}/report",
+                        external: true
+                    },
+                    {
+                        label: "Table IBSM",
+                        icon: "pi pi-copy",
+                        path: "{reservasi}/ibsm",
                         external: true
                     },
                 ],

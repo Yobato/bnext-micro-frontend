@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 3000",
-    "build": "next build",
-    "start": "next start -p 3000",
+    "dev:host": "cross-env HOST=host.bnext.localhost PORT=3000 next dev --turbo",
+    "build:host": "next build",
+    "start:host": "cross-env HOST=host.bnext.localhost PORT=3000 next start",
     "lint": "next lint"
   },
   "dependencies": {

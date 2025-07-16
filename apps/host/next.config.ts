@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
         source: '/reservasi/:path*',
         destination: 'http://localhost:3001/reservasi/:path*'
       },
+      {
+        source: '/cif',
+        destination: 'http://localhost:3002/cif'
+      },
+      {
+        source: '/cif/:path*',
+        destination: 'http://localhost:3002/cif/:path*'
+      },
     ]
   }
 };

@@ -81,7 +81,13 @@ const TablePrintPage = () => {
         addButton={{ visible: true, onClick: handleAdd }}
         printButton={{ visible: true, onClick: handlePrint }}
         exportButton={{ visible: true, onClick: handleExport }}
-        search={{ value: query, onChange: setQuery }}
+        search={{
+          value: query,
+          onChange: (v) => {
+            setQuery(v);
+            setCurrentPage(1);
+          },
+        }}
       />
     </div>
   );
