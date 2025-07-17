@@ -8,5 +8,6 @@ export * from './globalHelper';
 export * from './masterdataService';
 export * from './settingService';
 export {resolveMenu} from './menuResolver';
+export * from './sidebar'; 
 
 

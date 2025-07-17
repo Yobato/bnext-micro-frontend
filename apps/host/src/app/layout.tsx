@@ -3,12 +3,11 @@ import "@bnext/ui/src/styles/layout/layout.scss";
 import "@bnext/ui/src/styles/demo/Demos.scss";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import { PrimeReactProvider } from "primereact/api";
-import { LayoutProvider } from "@bnext/context";
-
-
 import "@bnext/ui/src/styles/lara-light-indigo/theme.css";
-// import "@bnext/ui/styles/globals.css"
+
+import { PrimeReactProvider } from "primereact/api";
+import { LayoutProvider, ToastContextProvider } from "@bnext/context";
+import SidebarListenerClient from "./SidebarListenerClient";
 
 export const metadata: Metadata = {
   title: "Host App",
@@ -19,12 +18,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const values = { ripple: true };
+
   return (
     <html lang="en">
       <body>
-        <LayoutProvider>
-          <PrimeReactProvider value={values}>{children}</PrimeReactProvider>
-        </LayoutProvider>
+        <ToastContextProvider>
+          <LayoutProvider>
+            <PrimeReactProvider value={values}>
+              <SidebarListenerClient />
+              {children}
+            </PrimeReactProvider>
+          </LayoutProvider>
+        </ToastContextProvider>
       </body>
     </html>
   );

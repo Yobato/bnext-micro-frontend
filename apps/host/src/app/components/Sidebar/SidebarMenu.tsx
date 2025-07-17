@@ -4,19 +4,22 @@ import { MenuGroup, MenuItem } from "@bnext/types/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { broadcastSidebarOpenItems } from "../../../utils/sidebarMessenger"; // ✅ Tambahkan ini
 
 type SidebarMenuProps = {
   menu: MenuGroup[];
-  currentZone: "cif" | "reservasi" | "settings";
+  currentZone: "host" | "cif" | "reservasi" | "settings"; // ✅ Tambah 'host'
 };
 
 const BASE_PATHS = {
+  host: "", // ✅ Tambahkan host (anggap root path-nya kosong)
   cif: "/cif",
   reservasi: "/reservasi",
   settings: "/settings",
 } as const;
 
 const ZONE_ORIGINS = {
+  host: "http://host.bnext.localhost:3000", // ✅ Tambahkan host
   cif: "http://cif.bnext.localhost:3002",
   reservasi: "http://reservasi.bnext.localhost:3001",
   settings: "http://settings.bnext.localhost:3003",
@@ -26,7 +29,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
   const pathname = usePathname();
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
 
-  // --- Open auto item jika match current pathname ---
+  // --- Auto-open berdasarkan pathname ---
   useEffect(() => {
     const matchAndOpen = () => {
       const updated = { ...openItems };
@@ -72,6 +75,11 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
 
     matchAndOpen();
   }, [pathname, currentZone, menu]);
+
+  // --- Broadcast saat openItems berubah ---
+  useEffect(() => {
+    broadcastSidebarOpenItems(openItems); // ✅ Kirim ke child/other zone
+  }, [openItems]);
 
   const getItemKey = (groupTitle: string, labelPath: string[], label: string) =>
     `${currentZone}>${groupTitle}>${[...labelPath, label].join(">")}`;

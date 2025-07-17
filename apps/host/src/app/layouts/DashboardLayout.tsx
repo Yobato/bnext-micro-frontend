@@ -3,9 +3,9 @@ import { Header } from "@bnext/ui";
 import { Sidebar } from "@bnext/ui";
 import React from "react";
 import SidebarMenu from "../components/Sidebar/SidebarMenu";
-import { resolveMenu } from "@bnext/utils" 
+import { resolveMenu } from "@bnext/utils";
 
-const menuCif = resolveMenu(menuRaw, "cif");
+const menuHost = resolveMenu(menuRaw, "host");
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,9 +14,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <Header></Header>
       <div className="layout-sidebar">
         <Sidebar>
-          <SidebarMenu
-            menu={menuCif} currentZone="cif"
-          />
+          <SidebarMenu menu={menuHost} currentZone="host" />
         </Sidebar>
       </div>
       <div className="layout-main-container">

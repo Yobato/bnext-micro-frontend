@@ -1,7 +1,7 @@
 // import './src/styles/globals.css';
 
 // Export component untuk Auth
-export { default as FormLogin } from './src/components/auth/form';
+// export { default as FormLogin } from '../../apps/host/src/app/components/auth/form';
 export {default as Info} from './src/components/auth/info';
 export { default as NoSupport } from './src/components/auth/noSupport';
 

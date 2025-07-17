@@ -6,6 +6,7 @@ import { Badge } from "primereact/badge";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 // import HeaderToggle from "./HeaderToggle";
 import { useToast } from "@bnext/context";
+import HeaderToggle from "./HeaderToggle";
 const Header = () => {
     const profile = useRef(null);
     const language = useRef(null);
@@ -57,6 +58,6 @@ const Header = () => {
             command: () => alert("Change lang to EN"),
         },
     ];
-    return (_jsxs(_Fragment, { children: [_jsx(ConfirmDialog, {}), _jsxs("div", { className: "layout-topbar", children: [_jsx("a", { href: "/home", className: "layout-topbar-logo", children: _jsx("img", { src: "/layout/images/logo-bsi.png", alt: "logo", width: 200, height: 100, style: { width: "auto", height: "3rem" } }) }), _jsxs("div", { className: "layout-menu-right", children: [_jsxs("p", { className: "p-topbar mr-3", children: ["Hello, ", _jsx("b", { children: "Satriyo" }), _jsx("br", {}), "Admin", _jsx("br", {}), "[ 001 - Jakarta ]"] }), _jsx("i", { className: "menu-right pi pi-bell mr-3 ml-3 p-link p-overlay-badge", children: _jsx(Badge, { value: 1, severity: "danger" }) }), _jsx(Menu, { model: profileItems, popup: true, ref: profile, id: "popup_profile_menu" }), _jsx("i", { className: "menu-right pi pi-user mr-3 ml-3 p-link", onClick: (e) => profile.current?.toggle(e) }), _jsx(Menu, { model: languageItems, popup: true, ref: language, id: "popup_lang_menu" }), _jsx("i", { className: "menu-right pi pi-globe mr-3 ml-3 p-link", onClick: (e) => language.current?.toggle(e), children: _jsx("span", { className: "language-label", children: " EN " }) })] })] })] }));
+    return (_jsxs(_Fragment, { children: [_jsx(ConfirmDialog, {}), _jsxs("div", { className: "layout-topbar", children: [_jsx("a", { href: "/home", className: "layout-topbar-logo", children: _jsx("img", { src: `${process.env.NEXT_PUBLIC_ASSET_URL}/layout/images/logo-bsi.png`, alt: "logo", width: 200, height: 100, style: { width: "auto", height: "3rem" } }) }), _jsx(HeaderToggle, {}), _jsxs("div", { className: "layout-menu-right", children: [_jsxs("p", { className: "p-topbar mr-3", children: ["Hello, ", _jsx("b", { children: "Satriyo" }), _jsx("br", {}), "Admin", _jsx("br", {}), "[ 001 - Jakarta ]"] }), _jsx("i", { className: "menu-right pi pi-bell mr-3 ml-3 p-link p-overlay-badge", children: _jsx(Badge, { value: 1, severity: "danger" }) }), _jsx(Menu, { model: profileItems, popup: true, ref: profile, id: "popup_profile_menu" }), _jsx("i", { className: "menu-right pi pi-user mr-3 ml-3 p-link", onClick: (e) => profile.current?.toggle(e) }), _jsx(Menu, { model: languageItems, popup: true, ref: language, id: "popup_lang_menu" }), _jsx("i", { className: "menu-right pi pi-globe mr-3 ml-3 p-link", onClick: (e) => language.current?.toggle(e), children: _jsx("span", { className: "language-label", children: " EN " }) })] })] })] }));
 };
 export default React.memo(Header);

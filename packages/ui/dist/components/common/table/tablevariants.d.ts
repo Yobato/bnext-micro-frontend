@@ -7,4 +7,4 @@ export type TableVariantConfig = {
     toolbarPosition: 'start-end' | 'left-right' | 'none';
 };
 export declare const tableVariantDefaults: Record<TableVariant, TableVariantConfig>;
-//# sourceMappingURL=tablevariants.d.ts.map
+//# sourceMappingURL=tableVariants.d.ts.map
