@@ -3,7 +3,7 @@ const Footer: React.FC = () => {
     <div>
       <span className="font-medium ml-2">
         <img
-          src={"/layout/images/footer.png"}
+          src={`${process.env.NEXT_PUBLIC_ASSET_URL}/layout/images/footer.png`}
           width={50}
           height={12.5}
           alt="logo"

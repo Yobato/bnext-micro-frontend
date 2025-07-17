@@ -7,6 +7,7 @@ import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 // import HeaderToggle from "./HeaderToggle";
 import { useToast } from "@bnext/context";
+import HeaderToggle from "./HeaderToggle";
 
 const Header = () => {
   const profile = useRef<Menu>(null);
@@ -95,7 +96,7 @@ const Header = () => {
       <div className="layout-topbar">
         <a href="/home" className="layout-topbar-logo">
           <img
-            src="/layout/images/logo-bsi.png"
+            src={`${process.env.NEXT_PUBLIC_ASSET_URL}/layout/images/logo-bsi.png`}
             alt="logo"
             width={200}
             height={100}
@@ -103,7 +104,7 @@ const Header = () => {
           />
         </a>
 
-        {/* <HeaderToggle /> */}
+        <HeaderToggle />
 
         <div className="layout-menu-right">
           <p className="p-topbar mr-3">

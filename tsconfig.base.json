@@ -22,6 +22,6 @@
         "@bnext/shared-wrappers/*": ["packages/shared-wrappers/dist/*"]
 
       }
-    }
+    },
   }
   
