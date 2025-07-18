@@ -7,16 +7,18 @@ import { useEffect, useState } from "react";
 
 type SidebarMenuProps = {
   menu: MenuGroup[];
-  currentZone: "cif" | "reservasi" | "settings";
+  currentZone: "host" | "cif" | "reservasi" | "settings";
 };
 
 const BASE_PATHS = {
+  host: "/dashboard",
   cif: "/cif",
   reservasi: "/reservasi",
   settings: "/settings",
 } as const;
 
 const ZONE_ORIGINS = {
+  host: "http://host.bnext.localhost:3000",
   cif: "http://cif.bnext.localhost:3002",
   reservasi: "http://reservasi.bnext.localhost:3001",
   settings: "http://settings.bnext.localhost:3003",
@@ -41,7 +43,9 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
         }
       }
 
-      if (foundMatch) setOpenItems(updated);
+      if (foundMatch) {
+        setOpenItems(updated);
+      }
     };
 
     const findMatchKey = (
@@ -71,16 +75,18 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
     };
 
     matchAndOpen();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, currentZone, menu]);
 
   const getItemKey = (groupTitle: string, labelPath: string[], label: string) =>
     `${currentZone}>${groupTitle}>${[...labelPath, label].join(">")}`;
 
   const toggleItem = (key: string) => {
-    setOpenItems((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+    const updated = {
+      ...openItems,
+      [key]: !openItems[key],
+    };
+    setOpenItems(updated);
   };
 
   const isActive = (item: MenuItem) => {

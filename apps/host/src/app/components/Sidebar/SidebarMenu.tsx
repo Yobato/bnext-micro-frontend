@@ -4,7 +4,7 @@ import { MenuGroup, MenuItem } from "@bnext/types/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { broadcastSidebarOpenItems } from "../../../utils/sidebarMessenger"; // ✅ Tambahkan ini
+// ✅ Tambahkan ini
 
 type SidebarMenuProps = {
   menu: MenuGroup[];
@@ -75,11 +75,6 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
 
     matchAndOpen();
   }, [pathname, currentZone, menu]);
-
-  // --- Broadcast saat openItems berubah ---
-  useEffect(() => {
-    broadcastSidebarOpenItems(openItems); // ✅ Kirim ke child/other zone
-  }, [openItems]);
 
   const getItemKey = (groupTitle: string, labelPath: string[], label: string) =>
     `${currentZone}>${groupTitle}>${[...labelPath, label].join(">")}`;

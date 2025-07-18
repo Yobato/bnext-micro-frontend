@@ -1,22 +1,14 @@
-"use client"
+"use client";
 import React from "react";
-import DashboardLayout from "../layouts/DashboardLayout";
-import { broadcastSidebarOpenItems } from "../../utils/sidebarMessenger";
 
 const DashboardPage = () => {
   return (
     <>
-      <div>DashboardPage</div>
-      <button
-        onClick={() =>
-          broadcastSidebarOpenItems({
-            "reservasi>Menu Utama>Submenu A": true,
-            "reservasi>Menu Utama>Submenu B": false,
-          })
-        }
-      >
-        Broadcast Sidebar Items
-      </button>
+      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <h1>Dashboard Host</h1>
+
+        {/* Iframe ke zona reservasi */}
+      </div>
     </>
   );
 };

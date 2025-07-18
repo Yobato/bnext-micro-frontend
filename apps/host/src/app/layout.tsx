@@ -7,7 +7,6 @@ import "@bnext/ui/src/styles/lara-light-indigo/theme.css";
 
 import { PrimeReactProvider } from "primereact/api";
 import { LayoutProvider, ToastContextProvider } from "@bnext/context";
-import SidebarListenerClient from "./SidebarListenerClient";
 
 export const metadata: Metadata = {
   title: "Host App",
@@ -25,7 +24,6 @@ export default function RootLayout({
         <ToastContextProvider>
           <LayoutProvider>
             <PrimeReactProvider value={values}>
-              <SidebarListenerClient />
               {children}
             </PrimeReactProvider>
           </LayoutProvider>

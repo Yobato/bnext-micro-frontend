@@ -7,7 +7,6 @@ import { LayoutProvider } from "@bnext/context";
 import { ToastContextProvider } from "@bnext/context";
 import "@bnext/ui/src/styles/lara-light-indigo/theme.css";
 import { default as DashboardLayout } from "apps/reservasi/src/app/layouts/DashboardLayout";
-import SidebarListenerClient from "./SidebarListenerClient";
 
 export default function RootLayout({
   children,
@@ -17,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SidebarListenerClient/>
         <LayoutProvider>
           <ToastContextProvider>
             <PrimeReactProvider>

@@ -1,84 +1,95 @@
 export const menuRaw = [
-    {
-      title: "Nasabah",
-      items: [
-        {
-          label: "CIF",
-          icon: "pi pi-fw pi-database",
-          childMenu: [
-            {
-              label: "Home CIF",
-              icon: "pi pi-home",
-              path: "{cif}/", // relatif terhadap zona /cif
-              external: true
-            },
-            {
-              label: "Search CIF",
-              icon: "pi pi-search",
-              path: "{cif}/search", // hasilnya: /cif/search
-              external: true
-            },
-            {
-              label: "Inquiry",
-              icon: "pi pi-copy",
-              path: "{cif}/inquiry",
-              external: true
-            },
-          ],
-        },
-        {
-          label: "Reservasi",
-          icon: "pi pi-fw pi-calendar",
-          childMenu: [
-            {
-              label: "Home Reservasi",
-              icon: "pi pi-home",
-              path: "{reservasi}/", // relatif terhadap zona /reservasi
-              external: true
-            },
-            {
-              label: "Formulir Selesai",
-              icon: "pi pi-copy",
-              path: "{reservasi}/form",
-              external: true
-            },
-            {
-              label: "Table Print",
-              icon: "pi pi-search",
-              path: "{reservasi}/search",
-              external: true
-            },
-            {
-              label: "Table Default",
-              icon: "pi pi-copy",
-              path: "{reservasi}/report",
-              external: true
-            },
-            {
-              label: "Table IBSM",
-              icon: "pi pi-copy",
-              path: "{reservasi}/ibsm",
-              external: true
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Pengaturan",
-      items: [
-        {
-          label: "User",
-          icon: "pi pi-fw pi-user",
-          childMenu: [
-            {
-              label: "Daftar User",
-              icon: "pi pi-users",
-              path: "/settings/users",
-            },
-          ],
-        },
-      ],
-    },
-  ];
-  
+  // Menu paling luar (Dashboard)
+  {
+    items: [
+      {
+        label: "Dashboard",
+        icon: "pi pi-home",
+        path: "{dashboard}/",
+      },
+    ],
+  },
+  // Menu Nasabah
+  {
+    title: "Nasabah",
+    items: [
+      {
+        label: "CIF",
+        icon: "pi pi-id-card",
+        childMenu: [
+          {
+            label: "Home CIF",
+            icon: "pi pi-home",
+            path: "{cif}/",
+            external: true,
+          },
+          {
+            label: "Search CIF",
+            icon: "pi pi-search",
+            path: "{cif}/search",
+            external: true,
+          },
+          {
+            label: "Inquiry",
+            icon: "pi pi-eye",
+            path: "{cif}/inquiry",
+            external: true,
+          },
+        ],
+      },
+      {
+        label: "Reservasi",
+        icon: "pi pi-calendar",
+        childMenu: [
+          {
+            label: "Home Reservasi",
+            icon: "pi pi-home",
+            path: "{reservasi}/",
+            external: true,
+          },
+          {
+            label: "Formulir Selesai",
+            icon: "pi pi-check-square",
+            path: "{reservasi}/form",
+            external: true,
+          },
+          {
+            label: "Table Print",
+            icon: "pi pi-print",
+            path: "{reservasi}/search",
+            external: true,
+          },
+          {
+            label: "Table Default",
+            icon: "pi pi-table",
+            path: "{reservasi}/report",
+            external: true,
+          },
+          {
+            label: "Table IBSM",
+            icon: "pi pi-database",
+            path: "{reservasi}/ibsm",
+            external: true,
+          },
+        ],
+      },
+    ],
+  },
+  // Menu Pengaturan
+  {
+    title: "Pengaturan",
+    items: [
+      {
+        label: "User",
+        icon: "pi pi-user",
+        childMenu: [
+          {
+            label: "Daftar User",
+            icon: "pi pi-users",
+            path: "/settings/users",
+          },
+        ],
+      },
+    ],
+  },
+];
