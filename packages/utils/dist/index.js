@@ -9,3 +9,5 @@ export * from './masterdataService';
 export * from './settingService';
 export { resolveMenu } from './menuResolver';
 export * from './sidebar';
+export * from '../src/sidebar/sidebarStorage';
+export * from '../src/sidebar/useSidebarOpenItems';

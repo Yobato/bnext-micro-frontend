@@ -3,23 +3,23 @@
 import { MenuGroup, MenuItem } from "@bnext/types/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-// ✅ Tambahkan ini
+import { useEffect } from "react";
+import { useSidebarOpenItems } from "@bnext/utils";
 
 type SidebarMenuProps = {
   menu: MenuGroup[];
-  currentZone: "host" | "cif" | "reservasi" | "settings"; // ✅ Tambah 'host'
+  currentZone: "host" | "cif" | "reservasi" | "settings";
 };
 
 const BASE_PATHS = {
-  host: "", // ✅ Tambahkan host (anggap root path-nya kosong)
+  host: "/dashboard",
   cif: "/cif",
   reservasi: "/reservasi",
   settings: "/settings",
 } as const;
 
 const ZONE_ORIGINS = {
-  host: "http://host.bnext.localhost:3000", // ✅ Tambahkan host
+  host: "http://host.bnext.localhost:3000",
   cif: "http://cif.bnext.localhost:3002",
   reservasi: "http://reservasi.bnext.localhost:3001",
   settings: "http://settings.bnext.localhost:3003",
@@ -27,31 +27,32 @@ const ZONE_ORIGINS = {
 
 const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
   const pathname = usePathname();
-  const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
+  const { openItems, updateItem } = useSidebarOpenItems(currentZone);
 
-  // --- Auto-open berdasarkan pathname ---
+  const getItemKey = (groupTitle: string, labelPath: string[], label: string) =>
+    `${groupTitle}>${[...labelPath, label].join(">")}`;
+
+  const toggleItem = (key: string) => {
+    const current = openItems[key] ?? false;
+    updateItem(key, !current);
+  };
+
   useEffect(() => {
-    const matchAndOpen = () => {
-      const updated = { ...openItems };
-      let foundMatch = false;
+    const updated = { ...openItems };
 
-      for (const group of menu) {
-        const key = findMatchKey(group.items, [], group.title);
-        if (key && !updated[key]) {
-          updated[key] = true;
-          foundMatch = true;
-          break;
-        }
+    for (const group of menu) {
+      const key = findMatchKey(group.items, [], group.title);
+      if (key && !updated[key]) {
+        updateItem(key, true);
+        break;
       }
+    }
 
-      if (foundMatch) setOpenItems(updated);
-    };
-
-    const findMatchKey = (
+    function findMatchKey(
       items: MenuItem[],
       labelPath: string[],
       groupTitle: string
-    ): string | null => {
+    ): string | null {
       for (const item of items) {
         const zone = (item as any).zone;
         if (zone !== currentZone) continue;
@@ -71,20 +72,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
         }
       }
       return null;
-    };
-
-    matchAndOpen();
+    }
   }, [pathname, currentZone, menu]);
-
-  const getItemKey = (groupTitle: string, labelPath: string[], label: string) =>
-    `${currentZone}>${groupTitle}>${[...labelPath, label].join(">")}`;
-
-  const toggleItem = (key: string) => {
-    setOpenItems((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
 
   const isActive = (item: MenuItem) => {
     if (!item.href) return false;
@@ -129,7 +118,10 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
       ) : (
         <a
           className="layout-menuitem-link"
-          onClick={() => hasChildren && toggleItem(key)}
+          onClick={(e) => {
+            e.preventDefault();
+            if (hasChildren) toggleItem(key);
+          }}
         >
           {item.icon && <i className={`layout-menuitem-icon ${item.icon}`} />}
           <span>{item.label}</span>
@@ -142,6 +134,9 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
           )}
         </a>
       );
+
+      console.log("🧩 Loaded keys:", openItems);
+      console.log("✅ Key:", key, "→", openItems[key]);
 
       return (
         <li key={key} className={active ? "active" : ""}>
