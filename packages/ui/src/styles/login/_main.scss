@@ -1,3 +1,4 @@
+@use "./variable" as var;
 body.login {
     text-decoration: none;
     background: url('/layout/images/background.png');
@@ -38,9 +39,9 @@ body.login {
 
 a.userid {
     font-weight: bolder;
-    color: $green;
+    color: var.$green;
 
     &:hover {
-        color: $greenActive;
+        color: var.$greenActive;
     }
 }

@@ -9,6 +9,7 @@ export const menuRaw: MenuGroup[] = [
         icon: "pi pi-home",
         label: "Dashboard",
         path: "{host}/dashboard",
+        // external: true,
       },
     ],
   },

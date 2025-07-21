@@ -1,4 +1,4 @@
-@import "./variable";
-@import "./main";
-@import "./main_class";
-@import "./viewport";
+@forward "./variable";
+@forward "./main";
+@forward "./main_class";
+@forward "./viewport";

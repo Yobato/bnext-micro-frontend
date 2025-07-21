@@ -1,3 +1,4 @@
+@use "./mixins" as mix;
 .layout-topbar {
     position: fixed;
     height: 5rem;
@@ -27,7 +28,7 @@
         }
 
         &:focus {
-            @include focused();
+            @include mix.focused();
         }
     }
 

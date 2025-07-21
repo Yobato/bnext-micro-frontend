@@ -31,6 +31,7 @@ export function resolveMenu(menuRaw, currentZone) {
             ...item,
             href: relativePath,
             zone: itemZone,
+            // external: item.external ?? false
         };
     };
     return menuRaw.map((group) => ({

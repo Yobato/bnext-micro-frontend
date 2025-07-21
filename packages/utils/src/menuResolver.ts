@@ -44,6 +44,7 @@ export function resolveMenu(
         ...item,
         href: relativePath,
         zone: itemZone,
+        // external: item.external ?? false
       };
     };
   

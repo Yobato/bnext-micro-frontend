@@ -1,3 +1,4 @@
+@use "./variable" as var;
 .containers {
     padding: 10dvh 60px;
 }
@@ -35,7 +36,7 @@
 }
 
 .bg-green {
-    background: $green;
+    background: var.$green;
 }
 
 // -------------- login page
@@ -58,11 +59,11 @@
 
 .field-login {
     border: none;
-    border-bottom: 1px solid $green;
+    border-bottom: 1px solid var.$green;
 
     &:focus {
         box-shadow: none;
-        border-bottom: 2px solid $green;
+        border-bottom: 2px solid var.$green;
     }
 }
 
@@ -83,7 +84,7 @@
     }
 
     &:disabled {
-        background-color: $red;
+        background-color: var.$red;
         cursor: not-allowed;
     }
 }
@@ -103,7 +104,7 @@
     margin-bottom: 20px;
     width: 510px;
     background: #fff;
-    border: 5px solid $green;
+    border: 5px solid var.$green;
     border-radius: 4px;
     padding: 10px;
     position: relative;
@@ -123,15 +124,15 @@
     z-index: 1;
     top: -35px;
     left: 24px;
-    border: 5px solid $orange;
-    border-bottom: 5px solid $green;
+    border: 5px solid var.$orange;
+    border-bottom: 5px solid var.$green;
     padding: 4px 10px;
     width: 130px;
     background: #fff;
     font-size: 11pt;
     margin-bottom: 10px;
     font-weight: bold;
-    color: $green;
+    color: var.$green;
     border-radius: 10px 10px 0px 0px;
 }
 

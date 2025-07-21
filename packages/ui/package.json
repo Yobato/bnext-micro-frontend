@@ -1,39 +1,41 @@
 {
-    "name": "@bnext/ui",
-    "version": "0.1.0",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "exports": {
-      ".": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      },
-      "./styles/*": "./src/styles/*",
-      "./types/*": "./src/types/*"
+  "name": "@bnext/ui",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
-    "files": [
-      "dist",
-      "src/styles",
-      "src/types"
-    ],
-    "scripts": {
-      "build": "tsc -b",
-      "clean": "rm -rf dist"
-    },
-    "dependencies": {
-      "i18next": "^25.2.1",
-      "primeflex": "^4.0.0",
-      "primeicons": "^7.0.0",
-      "primereact": "^10.9.6",
-      "react": "^19.1.0",
-      "react-dom": "^19.1.0",
-      "react-i18next": "^15.5.3",
-      "yup": "^1.6.1"
-    },
-    "devDependencies": {
-      "@types/react": "^18.2.42",
-      "@types/react-dom": "^18.2.17",
-      "typescript": "^5.4.0"
-    }
+    "./styles/*": "./src/styles/*",
+    "./types/*": "./src/types/*"
+  },
+  "files": [
+    "dist",
+    "src/styles",
+    "src/types"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "build:style": "sass src/styles/main.scss dist/styles.css",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "i18next": "^25.2.1",
+    "primeflex": "^4.0.0",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.6",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.3",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "sass": "^1.89.2",
+    "typescript": "^5.4.0"
   }
+}

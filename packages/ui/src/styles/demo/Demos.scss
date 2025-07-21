@@ -1,5 +1,5 @@
-@import './code.scss';
-@import './BlockViewer.scss';
-@import './TimelineDemo.scss';
-@import './flags/flags.css';
-@import './badges.scss';
+@forward './code.scss';
+@forward './BlockViewer.scss';
+@forward './TimelineDemo.scss';
+@forward './flags/flags.css';
+@forward './badges.scss';
