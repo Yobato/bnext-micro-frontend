@@ -2,6 +2,7 @@ export const BASE_PATHS = {
     cif: "/cif",
     reservasi: "/reservasi",
     settings: "/settings",
+    host: "",
 };
 export function resolveMenu(menuRaw, currentZone) {
     const currentBasePath = BASE_PATHS[currentZone];
@@ -13,6 +14,9 @@ export function resolveMenu(menuRaw, currentZone) {
             };
         }
         let finalPath = item.path || "";
+        if (finalPath.includes("{host}")) {
+            finalPath = finalPath.replace("{host}", ""); // host = root
+        }
         // Replace {zone}
         if (finalPath.includes("{")) {
             finalPath = finalPath.replace(/\{(\w+)\}/g, (_, zoneKey) => {
@@ -21,7 +25,7 @@ export function resolveMenu(menuRaw, currentZone) {
         }
         // Ambil zonenya
         const zoneMatch = finalPath.match(/^\/(cif|reservasi|settings)(\/|$)/);
-        const itemZone = zoneMatch?.[1] ?? currentZone;
+        const itemZone = zoneMatch?.[1] ?? "host";
         const relativePath = finalPath.replace(BASE_PATHS[itemZone], "") || "/";
         return {
             ...item,

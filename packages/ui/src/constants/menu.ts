@@ -1,11 +1,14 @@
-export const menuRaw = [
+import type { MenuGroup } from '@bnext/types'
+
+export const menuRaw: MenuGroup[] = [
   // Menu paling luar (Dashboard)
   {
+    title: "Dashboard",
     items: [
       {
-        label: "Dashboard",
         icon: "pi pi-home",
-        path: "{dashboard}/",
+        label: "Dashboard",
+        path: "{host}/dashboard",
       },
     ],
   },

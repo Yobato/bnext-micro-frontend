@@ -12,7 +12,7 @@ type SidebarMenuProps = {
 };
 
 const BASE_PATHS = {
-  host: "/dashboard",
+  host: "",
   cif: "/cif",
   reservasi: "/reservasi",
   settings: "/settings",

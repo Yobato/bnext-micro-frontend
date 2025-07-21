@@ -4,6 +4,7 @@ export const BASE_PATHS: Record<string, string> = {
   cif: "/cif",
   reservasi: "/reservasi",
   settings: "/settings",
+  host: "",
 };
 
 export function resolveMenu(
@@ -21,6 +22,10 @@ export function resolveMenu(
       }
   
       let finalPath = item.path || "";
+
+      if(finalPath.includes("{host}")){
+        finalPath = finalPath.replace("{host}", ""); // host = root
+      }
   
       // Replace {zone}
       if (finalPath.includes("{")) {
@@ -31,7 +36,7 @@ export function resolveMenu(
   
       // Ambil zonenya
       const zoneMatch = finalPath.match(/^\/(cif|reservasi|settings)(\/|$)/);
-      const itemZone = zoneMatch?.[1] ?? currentZone;
+      const itemZone = zoneMatch?.[1] ?? "host";
   
       const relativePath = finalPath.replace(BASE_PATHS[itemZone], "") || "/";
   

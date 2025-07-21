@@ -1,4 +1,4 @@
-export declare function useSidebarOpenItems(zone: string): {
+export declare function useSidebarOpenItems(currentZone: string): {
     openItems: any;
     updateItem: any;
 };
