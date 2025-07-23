@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-// import "@bnext/ui"
-// import "../../../../packages/ui/src/styles/layout/layout.scss";
-// import "../../../../packages/ui/src/styles/demo/Demos.scss";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import "@bnext/ui/dist/styles.css";
-// import "../../../../packages/src/styles/lara-light-indigo/theme.css";
-
 import { PrimeReactProvider } from "primereact/api";
 import { LayoutProvider, ToastContextProvider } from "@bnext/context";
+import "@bnext/ui/dist/styles.css";
+
 
 export const metadata: Metadata = {
   title: "Host App",

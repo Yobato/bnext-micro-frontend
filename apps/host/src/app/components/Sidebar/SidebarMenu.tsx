@@ -135,8 +135,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ menu, currentZone }) => {
         </a>
       );
 
-      console.log("🧩 Loaded keys:", openItems);
-      console.log("✅ Key:", key, "→", openItems[key]);
+      // console.log("🧩 Loaded keys:", openItems);
+      // console.log("✅ Key:", key, "→", openItems[key]);
 
       return (
         <li key={key} className={active ? "active" : ""}>
