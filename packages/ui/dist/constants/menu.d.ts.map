@@ -1,1 +1,1 @@
-{"version":3,"file":"menu.d.ts","sourceRoot":"","sources":["../../src/constants/menu.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,OAAO;;;;;;;;;;;;;;;;;;;;;;;IAkFjB,CAAC"}
+{"version":3,"file":"menu.d.ts","sourceRoot":"","sources":["../../src/constants/menu.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,SAAS,EAAE,MAAM,cAAc,CAAA;AAE7C,eAAO,MAAM,OAAO,EAAE,SAAS,EAgG9B,CAAC"}

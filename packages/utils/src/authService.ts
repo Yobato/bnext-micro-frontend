@@ -3,9 +3,13 @@ import { Credentials } from "@bnext/types"
 import axios from "axios";
 
 
-export const actionLogin = async (url: string, params: Credentials) => {
+export const actionLogin = async (userId: string, password: string) => {
     try {
-        const response = await axiosInstance.post(url, params);
+        const response = await axios.post(
+            "http://host.bnext.localhost:4000/login", 
+            {userId, password}, 
+            {withCredentials: true}
+        )
         return response.data;
     } catch (e) {
         if (axios.isAxiosError(e) && e.response) {
@@ -15,10 +19,29 @@ export const actionLogin = async (url: string, params: Credentials) => {
     }
 }
 
-export const actionLogout = (params: string) => {
+export const getMe = async () => {
     try {
-        const res = axiosInstance.get('user/user/logout?id='+ params)
-        return res;
+        const response = await axios.get(
+            "http://host.bnext.localhost:4000/me",
+            {withCredentials: true}
+        )
+        return response.data;
+    } catch (e) {
+        if (axios.isAxiosError(e) && e.response) {
+            throw e.response.data.statusMSg;
+        }
+        throw e;
+    }
+}
+
+export const actionLogout = async() => {
+    try {
+        const response = await axios.post(
+            "http://host.bnext.localhost:4000/logout",
+            {},
+            {withCredentials: true}
+        )
+        return response.data;
     } catch (e) {
         if (axios.isAxiosError(e) && e.response) {
             throw e.response.data.statusMSg;

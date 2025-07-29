@@ -1,94 +1,70 @@
 "use client";
 
-import React, { useRef } from "react";
-import { Menu } from "primereact/menu";
+// import "./tailwindUsage.css";
+import React, { useState, useRef, useEffect } from "react";
 import { Badge } from "primereact/badge";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
-
-// import HeaderToggle from "./HeaderToggle";
-import { useToast } from "@bnext/context";
 import HeaderToggle from "./HeaderToggle";
 
-const Header = () => {
-  const profile = useRef<Menu>(null);
-  const language = useRef<Menu>(null);
-  const { globalOnSuccess } = useToast();
+const Flag = ({ src, alt }: { src: string; alt: string }) => (
+  <img alt={alt} src={src} className="mr-2" style={{ width: "18px" }} />
+);
 
-  const handleLogout = () => {
-    globalOnSuccess("Otsukaresama Satriyo\nWasalamualaikum wr. wb.");
-    setTimeout(() => {
-      alert("Logging out...");
-    }, 1000);
-  };
+type HeaderProps = {
+  onLogout?: () => void;
+};
 
-  const profileItems = [
-    {
-      template: () => (
-        <span className="pop-profile">
-          <p className="p-profile">
-            <b>Satriyo</b>
-            <br />
-            Admin
-            <br />
-            001 - Jakarta
-          </p>
-          <hr />
-        </span>
-      ),
-    },
-    {
-      label: "Profile",
-      items: [
-        {
-          label: "Change Password",
-          icon: "pi pi-user-edit",
-          command: () => alert("Change Password clicked"),
-        },
-        {
-          label: "Logout",
-          icon: "pi pi-sign-out",
-          command: () =>
-            confirmDialog({
-              message: "Are you sure you want to logout?",
-              header: "Confirmation",
-              icon: "pi pi-exclamation-triangle",
-              defaultFocus: "reject",
-              acceptClassName: "p-button-danger",
-              acceptLabel: "Yes",
-              rejectLabel: "No",
-              accept: handleLogout,
-            }),
-        },
-      ],
-    },
-  ];
+const dropdownStyle: React.CSSProperties = {
+  position: "absolute",
+  right: 0,
+  marginTop: "8px",
+  width: "220px",
+  backgroundColor: "#fff",
+  borderRadius: "6px",
+  boxShadow: "0 2px 12px rgba(0, 0, 0, 0.1)",
+  zIndex: 9999,
+  overflow: "hidden",
+  border: "1px solid #ddd",
+};
 
-  const languageItems = [
-    {
-      label: "Bahasa Indonesia",
-      icon: () => (
-        <img
-          alt="id-flag"
-          src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
-          className="mr-2 flag flag-id"
-          style={{ width: "18px" }}
-        />
-      ),
-      command: () => alert("Change lang to ID"),
-    },
-    {
-      label: "English",
-      icon: () => (
-        <img
-          alt="en-flag"
-          src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
-          className="mr-2 flag flag-us"
-          style={{ width: "18px" }}
-        />
-      ),
-      command: () => alert("Change lang to EN"),
-    },
-  ];
+const dropdownItemStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  padding: "8px 16px",
+  fontSize: "14px",
+  backgroundColor: "white",
+  border: "none",
+  textAlign: "left",
+  cursor: "pointer",
+};
+
+const dropdownItemHover = {
+  backgroundColor: "#f5f5f5",
+};
+
+const Header = ({ onLogout }: HeaderProps) => {
+  const langRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        langRef.current &&
+        !langRef.current.contains(e.target as Node) &&
+        profileRef.current &&
+        !profileRef.current.contains(e.target as Node)
+      ) {
+        setIsLangOpen(false);
+        setIsProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -106,7 +82,7 @@ const Header = () => {
 
         <HeaderToggle />
 
-        <div className="layout-menu-right">
+        <div className="layout-menu-right" style={{ position: "relative", alignItems: "center" }}>
           <p className="p-topbar mr-3">
             Hello, <b>Satriyo</b>
             <br />
@@ -119,29 +95,132 @@ const Header = () => {
             <Badge value={1} severity="danger" />
           </i>
 
-          <Menu
-            model={profileItems}
-            popup
-            ref={profile}
-            id="popup_profile_menu"
-          />
-          <i
-            className="menu-right pi pi-user mr-3 ml-3 p-link"
-            onClick={(e) => profile.current?.toggle(e)}
-          ></i>
+          {/* Profile Dropdown */}
+          <div className="relative" ref={profileRef}>
+            <button
+              type="button"
+              className="menu-right pi pi-user mr-3 ml-3 p-link"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsProfileOpen((prev) => !prev);
+              }}
+              style={{ background: "none", border: "none" }}
+            />
+            {isProfileOpen && (
+              <div style={dropdownStyle}>
+                <div
+                  style={{
+                    padding: "12px 16px",
+                    borderBottom: "1px solid #eee",
+                    fontSize: "13px",
+                  }}
+                >
+                  <p style={{ margin: 0, fontWeight: "bold" }}>Satriyo</p>
+                  <p style={{ margin: 0, color: "#666" }}>Admin</p>
+                  <p style={{ margin: 0, color: "#666" }}>001 - Jakarta</p>
+                </div>
+                <button
+                  style={dropdownItemStyle}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.backgroundColor =
+                      dropdownItemHover.backgroundColor!)
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.backgroundColor = "white")
+                  }
+                  onClick={() => alert("Change Password clicked")}
+                >
+                  <i className="pi pi-user-edit mr-2"></i>
+                  Change Password
+                </button>
+                <button
+                  style={{ ...dropdownItemStyle, color: "#e11d48" }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#fdecea")
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.backgroundColor = "white")
+                  }
+                  onClick={() =>
+                    confirmDialog({
+                      message: "Are you sure you want to logout?",
+                      header: "Confirmation",
+                      icon: "pi pi-exclamation-triangle",
+                      defaultFocus: "reject",
+                      acceptClassName: "p-button-danger",
+                      acceptLabel: "Yes",
+                      rejectLabel: "No",
+                      accept: onLogout,
+                    })
+                  }
+                >
+                  <i className="pi pi-sign-out mr-2"></i>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
 
-          <Menu
-            model={languageItems}
-            popup
-            ref={language}
-            id="popup_lang_menu"
-          />
-          <i
-            className="menu-right pi pi-globe mr-3 ml-3 p-link"
-            onClick={(e) => language.current?.toggle(e)}
-          >
-            <span className="language-label"> EN </span>
-          </i>
+          {/* Language Dropdown */}
+          <div className="relative" ref={langRef}>
+            <button
+              type="button"
+              className="menu-right pi pi-globe mr-3 ml-3 p-link"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsLangOpen((prev) => !prev);
+              }}
+              style={{ background: "none", border: "none" }}
+            >
+              <span className="language-label"> EN </span>
+            </button>
+            {isLangOpen && (
+              <div style={dropdownStyle}>
+                <button
+                  style={{
+                    ...dropdownItemStyle,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.backgroundColor =
+                      dropdownItemHover.backgroundColor!)
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.backgroundColor = "white")
+                  }
+                  onClick={() => alert("Change lang to ID")}
+                >
+                  <Flag
+                    src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
+                    alt="id-flag"
+                  />
+                  Bahasa Indonesia
+                </button>
+                <button
+                  style={{
+                    ...dropdownItemStyle,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  onMouseOver={(e) =>
+                    (e.currentTarget.style.backgroundColor =
+                      dropdownItemHover.backgroundColor!)
+                  }
+                  onMouseOut={(e) =>
+                    (e.currentTarget.style.backgroundColor = "white")
+                  }
+                  onClick={() => alert("Change lang to EN")}
+                >
+                  <Flag
+                    src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
+                    alt="en-flag"
+                  />
+                  English
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

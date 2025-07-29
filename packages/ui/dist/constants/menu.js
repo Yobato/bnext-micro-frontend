@@ -1,75 +1,89 @@
 export const menuRaw = [
+    // Menu paling luar (Dashboard)
+    {
+        title: "Dashboard",
+        items: [
+            {
+                icon: "pi pi-home",
+                label: "Dashboard",
+                path: "{host}/dashboard",
+                // external: true,
+            },
+        ],
+    },
+    // Menu Nasabah
     {
         title: "Nasabah",
         items: [
             {
                 label: "CIF",
-                icon: "pi pi-fw pi-database",
+                icon: "pi pi-id-card",
                 childMenu: [
                     {
                         label: "Home CIF",
                         icon: "pi pi-home",
-                        path: "{cif}/", // relatif terhadap zona /cif
-                        external: true
+                        path: "{cif}/",
+                        external: true,
                     },
                     {
                         label: "Search CIF",
                         icon: "pi pi-search",
-                        path: "{cif}/search", // hasilnya: /cif/search
-                        external: true
+                        path: "{cif}/search",
+                        external: true,
                     },
                     {
                         label: "Inquiry",
-                        icon: "pi pi-copy",
+                        icon: "pi pi-eye",
                         path: "{cif}/inquiry",
-                        external: true
+                        external: true,
                     },
                 ],
             },
             {
                 label: "Reservasi",
-                icon: "pi pi-fw pi-calendar",
+                icon: "pi pi-calendar",
                 childMenu: [
                     {
                         label: "Home Reservasi",
                         icon: "pi pi-home",
-                        path: "{reservasi}/", // relatif terhadap zona /reservasi
-                        external: true
+                        path: "{reservasi}/",
+                        external: true,
                     },
                     {
                         label: "Formulir Selesai",
-                        icon: "pi pi-copy",
+                        icon: "pi pi-check-square",
                         path: "{reservasi}/form",
-                        external: true
+                        external: true,
                     },
                     {
                         label: "Table Print",
-                        icon: "pi pi-search",
+                        icon: "pi pi-print",
                         path: "{reservasi}/search",
-                        external: true
+                        external: true,
                     },
                     {
                         label: "Table Default",
-                        icon: "pi pi-copy",
+                        icon: "pi pi-table",
                         path: "{reservasi}/report",
-                        external: true
+                        external: true,
                     },
                     {
                         label: "Table IBSM",
-                        icon: "pi pi-copy",
+                        icon: "pi pi-database",
                         path: "{reservasi}/ibsm",
-                        external: true
+                        external: true,
                     },
                 ],
             },
         ],
     },
+    // Menu Pengaturan
     {
         title: "Pengaturan",
         items: [
             {
                 label: "User",
-                icon: "pi pi-fw pi-user",
+                icon: "pi pi-user",
                 childMenu: [
                     {
                         label: "Daftar User",

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:host": "cross-env HOST=host.bnext.localhost PORT=3000 next dev --turbo",
+    "dev:host": "cross-env HOST=host. PORT=3000 next dev --turbo",
     "build:host": "next build",
-    "start:host": "cross-env HOST=host.bnext.localhost PORT=3000 next start",
+    "start:host": "cross-env HOST=host. PORT=3000 next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,7 +16,8 @@
     "primereact": "^10.9.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

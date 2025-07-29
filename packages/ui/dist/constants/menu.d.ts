@@ -1,25 +1,3 @@
-export declare const menuRaw: ({
-    title: string;
-    items: {
-        label: string;
-        icon: string;
-        childMenu: {
-            label: string;
-            icon: string;
-            path: string;
-            external: boolean;
-        }[];
-    }[];
-} | {
-    title: string;
-    items: {
-        label: string;
-        icon: string;
-        childMenu: {
-            label: string;
-            icon: string;
-            path: string;
-        }[];
-    }[];
-})[];
+import type { MenuGroup } from '@bnext/types';
+export declare const menuRaw: MenuGroup[];
 //# sourceMappingURL=menu.d.ts.map

@@ -1,9 +1,9 @@
 import { Footer, menuRaw } from "@bnext/ui";
-import { Header } from "@bnext/ui";
 import { Sidebar } from "@bnext/ui";
 import React from "react";
 import SidebarMenu from "../components/Sidebar/SidebarMenu";
 import { resolveMenu } from "@bnext/utils" 
+import { HeaderHost } from "./HeaderHost";
 
 const menuCif = resolveMenu(menuRaw, "cif");
 
@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     // <SessionProvider>
     <div id="webScreen" className="layout-wrapper layout-static">
-      <Header></Header>
+      <HeaderHost></HeaderHost>
       <div className="layout-sidebar">
         <Sidebar>
           <SidebarMenu
