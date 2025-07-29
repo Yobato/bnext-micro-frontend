@@ -6,7 +6,7 @@ import axios from "axios";
 export const actionLogin = async (userId: string, password: string) => {
     try {
         const response = await axios.post(
-            "http://host.bnext.localhost:4000/login", 
+            "http://api.bnext.localhost:4000/login", 
             {userId, password}, 
             {withCredentials: true}
         )
@@ -22,7 +22,7 @@ export const actionLogin = async (userId: string, password: string) => {
 export const getMe = async () => {
     try {
         const response = await axios.get(
-            "http://host.bnext.localhost:4000/me",
+            "http://api.bnext.localhost:4000/me",
             {withCredentials: true}
         )
         return response.data;
@@ -37,7 +37,7 @@ export const getMe = async () => {
 export const actionLogout = async() => {
     try {
         const response = await axios.post(
-            "http://host.bnext.localhost:4000/logout",
+            "http://api.bnext.localhost:4000/logout",
             {},
             {withCredentials: true}
         )

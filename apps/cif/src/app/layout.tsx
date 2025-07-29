@@ -1,26 +1,32 @@
-// import "@bnext/ui/src/styles/layout/layout.scss";
-// import "@bnext/ui/src/styles/demo/Demos.scss";
+"use client";
+
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import { PrimeReactProvider } from "primereact/api";
-import { LayoutProvider } from "@bnext/context";
-import { ToastContextProvider } from "@bnext/context";
-// import "@bnext/ui/src/styles/lara-light-indigo/theme.css";
 import "@bnext/ui/dist/styles.css";
+
+import { PrimeReactProvider } from "primereact/api";
+import { LayoutProvider, ToastContextProvider, SessionProvider } from "@bnext/context";
 import { default as DashboardLayout } from "../app/layouts/DashboardLayout";
+
+import { withAuthProtection } from "@bnext/context";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const Protected = withAuthProtection(()=> <>{children}</>)
   return (
     <html lang="en">
       <body>
         <LayoutProvider>
           <ToastContextProvider>
             <PrimeReactProvider>
-              <DashboardLayout>{children}</DashboardLayout>
+              <SessionProvider>
+              <DashboardLayout>
+                <Protected/>
+              </DashboardLayout>
+              </SessionProvider>
             </PrimeReactProvider>
           </ToastContextProvider>
         </LayoutProvider>
