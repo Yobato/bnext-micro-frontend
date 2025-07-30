@@ -25,6 +25,14 @@ const nextConfig: NextConfig = {
         source: '/cif/:path*',
         destination: 'http://localhost:3002/cif/:path*'
       },
+      {
+        source: '/settings',
+        destination: 'http://localhost:3003/settings'
+      },
+      {
+        source: '/settings/:path*',
+        destination: 'http://localhost:3003/settings/:path*'
+      },
     ]
   }
 };

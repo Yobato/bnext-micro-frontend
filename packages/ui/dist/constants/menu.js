@@ -88,7 +88,7 @@ export const menuRaw = [
                     {
                         label: "Daftar User",
                         icon: "pi pi-users",
-                        path: "/settings/users",
+                        path: "{settings}/users",
                     },
                 ],
             },

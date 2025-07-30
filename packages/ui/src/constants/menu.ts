@@ -90,7 +90,7 @@ export const menuRaw: MenuGroup[] = [
           {
             label: "Daftar User",
             icon: "pi pi-users",
-            path: "/settings/users",
+            path: "{settings}/users",
           },
         ],
       },

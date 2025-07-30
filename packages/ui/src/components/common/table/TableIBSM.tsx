@@ -1,7 +1,8 @@
 "use client"
 
-import React from "react";
 import BaseTable, { Column } from "./BaseTable";
+import React, { ReactNode } from "react";
+import { Badge } from "primereact/badge";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { IconField } from "primereact/iconfield";
@@ -48,6 +49,18 @@ interface TableIBSMProps {
   onPageSizeChange: (size: number) => void;
 }
 
+const isTemplate = (type: string, value: string): ReactNode => {
+  switch (type) {
+    case "badge":
+      const badgeType = value === "1" || "active" || "Active"  ? "success" : "danger";
+      const label =
+        value === "1" || "active" || "Active" ? "Active" : "Inactive";
+      return <Badge value={label} severity={badgeType} />;
+    default:
+      return value;
+  }
+};
+
 const TableIBSM: React.FC<TableIBSMProps> = ({
   response,
   columns,
@@ -90,7 +103,9 @@ const TableIBSM: React.FC<TableIBSMProps> = ({
     return columns.map((col) => ({
       header: col.header,
       accessor: col.field,
-      template: undefined, // No template used for IBSM
+      template: col.template
+        ? (value, row) => isTemplate(col.template!, value)
+        : undefined,
     }));
   };
 
