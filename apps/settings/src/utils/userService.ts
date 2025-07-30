@@ -23,3 +23,16 @@ export const getUsers = async (): Promise<User[]> => {
     return [];
   }
 };
+
+export const createUser = async (data:any): Promise<User>=>{
+  try {
+    const response = await axios.post(
+        "http://api.bnext.localhost:4000/users",
+        data
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error creating user:", error);
+    throw error;
+  }
+}

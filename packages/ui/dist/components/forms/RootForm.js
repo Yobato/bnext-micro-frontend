@@ -58,6 +58,6 @@ function RootForm({ fields, initialValue, onSubmit, }) {
                 return null;
         }
     };
-    return (_jsxs("form", { onSubmit: handleSubmit, className: "flex flex-column gap-4", children: [fields.map((field) => (_jsx("div", { children: renderField(field) }, field.name))), _jsx("div", { className: "flex justify-end max-w-sm ml-auto", children: _jsx(Button, { type: "submit", className: "primary", children: "Submit" }) })] }));
+    return (_jsxs("form", { onSubmit: handleSubmit, className: "flex flex-column gap-2", children: [fields.map((field) => (_jsx("div", { children: renderField(field) }, field.name))), _jsx("div", { className: "flex justify-end max-w-sm ml-auto", children: _jsx(Button, { type: "submit", className: "primary", children: "Submit" }) })] }));
 }
 export default RootForm;

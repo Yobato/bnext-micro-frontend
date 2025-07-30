@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { TableIBSM, ColumnProps } from "@bnext/ui";
 import { getUsers } from "../../utils/userService"; // sesuaikan path
+import { useRouter } from "next/navigation";
 
 const columns: ColumnProps[] = [
   { header: "Nama", field: "name" },
@@ -20,6 +21,7 @@ const TableUsersPage = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
+  const router = useRouter();
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -61,7 +63,7 @@ const TableUsersPage = () => {
   };
 
   const handleAdd = () => {
-    alert("Klik tombol tambah data");
+    router.push("/users/create");
   };
 
   const handleDelete = (id: string) => {
@@ -69,7 +71,7 @@ const TableUsersPage = () => {
   };
 
   return (
-    <div className="p-4">
+    <div>
       <TableIBSM
         response={response}
         columns={columns}

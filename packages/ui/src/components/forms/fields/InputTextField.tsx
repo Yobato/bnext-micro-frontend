@@ -8,6 +8,7 @@ export type InputTextFieldProps = {
   name: string;
   label: string;
   value: string;
+  inputType?: "text" | "password" | "email" | "tel" | "url";
   onChange: (value: string) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: string;
@@ -24,6 +25,7 @@ const InputTextField: React.FC<InputTextFieldProps> = ({
   name,
   label,
   value,
+  inputType,
   onChange,
   onBlur,
   error,
@@ -49,6 +51,7 @@ const InputTextField: React.FC<InputTextFieldProps> = ({
         id={name}
         name={name}
         value={value}
+        type={inputType || "text"}
         onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
         // required={required}

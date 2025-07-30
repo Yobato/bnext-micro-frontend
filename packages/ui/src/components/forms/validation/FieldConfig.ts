@@ -24,4 +24,5 @@ export interface FieldConfig {
   checked?: boolean; // for checkbox
   mask?: string; // for inputmask
   optionData?: { label: string; value: string | number }[]; // for select, radio, multiselect
+  inputType?: "text" | "password" | "email" | "tel" | "url";
 }

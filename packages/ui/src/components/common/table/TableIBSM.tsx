@@ -52,14 +52,19 @@ interface TableIBSMProps {
 const isTemplate = (type: string, value: string): ReactNode => {
   switch (type) {
     case "badge":
-      const badgeType = value === "1" || "active" || "Active"  ? "success" : "danger";
-      const label =
-        value === "1" || "active" || "Active" ? "Active" : "Inactive";
+      const isActive =
+        value === "1" || value === "active" || value === "Active";
+
+      const badgeType = isActive ? "success" : "danger";
+      const label = isActive ? "Active" : "Inactive";
+
       return <Badge value={label} severity={badgeType} />;
+
     default:
       return value;
   }
 };
+
 
 const TableIBSM: React.FC<TableIBSMProps> = ({
   response,

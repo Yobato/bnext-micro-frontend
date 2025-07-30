@@ -64,7 +64,13 @@ function RootForm<T extends Record<string, any>>({
 
     switch (field.typeForm) {
       case "input":
-        return <InputTextField {...commonProps} maxLength={field.maxLength} />;
+        return (
+          <InputTextField
+            {...commonProps}
+            maxLength={field.maxLength}
+            inputType={field.inputType}
+          />
+        );
       case "inputCurrency":
         return (
           <InputCurrencyField {...commonProps} maxLength={field.maxLength} />
@@ -82,7 +88,9 @@ function RootForm<T extends Record<string, any>>({
           <RadioGroupField {...commonProps} options={field.optionData || []} />
         );
       case "checkbox":
-        return <CheckboxField {...commonProps} checked={formData[field.name]} />;
+        return (
+          <CheckboxField {...commonProps} checked={formData[field.name]} />
+        );
       case "select":
         return (
           <SelectDropdownField
@@ -100,10 +108,11 @@ function RootForm<T extends Record<string, any>>({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-column gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-column">
       {fields.map((field) => (
         <div key={field.name}>{renderField(field)}</div>
       ))}
+      <hr />
       <div className="flex justify-end max-w-sm ml-auto">
         <Button type="submit" className="primary">
           Submit
