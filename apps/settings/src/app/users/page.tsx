@@ -2,8 +2,11 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { TableIBSM, ColumnProps } from "@bnext/ui";
-import { getUsers } from "../../utils/userService"; // sesuaikan path
+import { deleteUser, getUsers, User } from "../../utils/userService"; // sesuaikan path
 import { useRouter } from "next/navigation";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { useToast } from "@bnext/context";
+import { getMe } from "@bnext/utils";
 
 const columns: ColumnProps[] = [
   { header: "Nama", field: "name" },
@@ -23,6 +26,9 @@ const TableUsersPage = () => {
   const [pageSize, setPageSize] = useState(5);
   const router = useRouter();
 
+  const { globalOnSuccess, globalOnError } = useToast();
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
   useEffect(() => {
     const loadUsers = async () => {
       try {
@@ -37,6 +43,15 @@ const TableUsersPage = () => {
     };
 
     loadUsers();
+  }, []);
+
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      const user = await getMe();
+      setCurrentUser(user);
+    };
+    fetchCurrentUser();
   }, []);
 
   const filteredData = useMemo(() => {
@@ -59,19 +74,47 @@ const TableUsersPage = () => {
   };
 
   const handleEdit = (_e: any, id: string) => {
-    alert(`Edit data dengan ID: ${id}`);
+    router.push(`/users/${id}/edit`);
   };
 
   const handleAdd = () => {
     router.push("/users/create");
   };
 
-  const handleDelete = (id: string) => {
-    alert(`Delete data dengan ID: ${id}`);
+  const handleDelete = async (id: string) => {
+    setDeletingId(id);
+    try {
+      await deleteUser(id);
+      setUsers((prev) => prev.filter((u) => u.id !== id));
+      globalOnSuccess("User berhasil dihapus");
+    } catch (error) {
+      globalOnError("Gagal menghapus user");
+      console.error("Error deleting user:", error);
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  const confirmDelete = (id: string) => {
+    if (id === currentUser?.id || id === currentUser?.userId) {
+      globalOnError(
+        "Kamu tidak bisa menghapus akunmu sendiri saat sedang login"
+      );
+      return;
+    }
+    confirmDialog({
+      message: "Apakah Anda yakin ingin menghapus user ini?",
+      header: "Konfirmasi Hapus",
+      icon: "pi pi-exclamation-triangle",
+      acceptLabel: "Ya, hapus user",
+      rejectLabel: "Batal",
+      accept: () => handleDelete(id),
+    });
   };
 
   return (
     <div>
+      <ConfirmDialog />
       <TableIBSM
         response={response}
         columns={columns}
@@ -84,7 +127,7 @@ const TableUsersPage = () => {
           },
         }}
         onEdit={handleEdit}
-        onDelete={handleDelete}
+        onDelete={confirmDelete}
         isLoading={loading}
         pageSize={pageSize}
         onPageChange={setCurrentPage}
