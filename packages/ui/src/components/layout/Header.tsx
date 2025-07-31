@@ -10,8 +10,19 @@ const Flag = ({ src, alt }: { src: string; alt: string }) => (
   <img alt={alt} src={src} className="mr-2" style={{ width: "18px" }} />
 );
 
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  branch: string;
+  group: string;
+  userId: string;
+  status: string;
+};
+
 type HeaderProps = {
   onLogout?: () => void;
+  currentUser?: User;
 };
 
 const dropdownStyle: React.CSSProperties = {
@@ -43,7 +54,7 @@ const dropdownItemHover = {
   backgroundColor: "#f5f5f5",
 };
 
-const Header = ({ onLogout }: HeaderProps) => {
+const Header = ({ onLogout, currentUser }: HeaderProps) => {
   const langRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
@@ -66,6 +77,11 @@ const Header = ({ onLogout }: HeaderProps) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const displayGroup =
+    currentUser?.group?.length > 10
+      ? currentUser.group.slice(0, 10) + "..."
+      : currentUser?.group;
+
   return (
     <>
       <ConfirmDialog />
@@ -82,13 +98,17 @@ const Header = ({ onLogout }: HeaderProps) => {
 
         <HeaderToggle />
 
-        <div className="layout-menu-right" style={{ position: "relative", alignItems: "center" }}>
+        <div
+          className="layout-menu-right"
+          style={{ position: "relative", alignItems: "center" }}
+        >
           <p className="p-topbar mr-3">
-            Hello, <b>Satriyo</b>
+            Hello, <b>{currentUser?.name || "User"}</b>
             <br />
-            Admin
+            {displayGroup || "Role"}
             <br />
-            &#91; 001 - Jakarta &#93;
+            &#91; {currentUser?.branch.slice(0, 5) || "-"} -{" "}
+            {currentUser?.branch.slice(8) || "-"} &#93;
           </p>
 
           <i className="menu-right pi pi-bell mr-3 ml-3 p-link p-overlay-badge">
@@ -115,9 +135,14 @@ const Header = ({ onLogout }: HeaderProps) => {
                     fontSize: "13px",
                   }}
                 >
-                  <p style={{ margin: 0, fontWeight: "bold" }}>Satriyo</p>
-                  <p style={{ margin: 0, color: "#666" }}>Admin</p>
-                  <p style={{ margin: 0, color: "#666" }}>001 - Jakarta</p>
+                  <p style={{ margin: 0, fontWeight: "bold" }}>
+                    {currentUser?.name}
+                  </p>
+                  <p style={{ margin: 0, color: "#666" }}>{displayGroup}</p>
+                  <p style={{ margin: 0, color: "#666" }}>
+                    {currentUser?.branch.slice(0, 5)} -{" "}
+                    {currentUser?.branch.slice(8)}
+                  </p>
                 </div>
                 <button
                   style={dropdownItemStyle}
