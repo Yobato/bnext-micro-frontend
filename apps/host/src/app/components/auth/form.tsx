@@ -10,6 +10,7 @@ import "@bnext/ui/src/styles/button/button.scss";
 import { useRouter } from "next/navigation";
 import { actionLogin } from "@bnext/utils";
 import * as yup from "yup";
+import { useToast } from "@bnext/context";
 // import "@/styles/button/button.scss";
 
 const loginSchema = yup.object().shape({
@@ -25,6 +26,7 @@ const FormLogin = () => {
     {}
   );
   const router = useRouter();
+  const { globalOnSuccess, globalOnError } = useToast();
 
   useEffect(() => {
     document.body.classList.add("login");
@@ -37,13 +39,12 @@ const FormLogin = () => {
   // validasi
   const validateField = async (field: string, value: string) => {
     try {
-      await(yup.reach(loginSchema, field) as yup.AnySchema).validate(value);
+      await (yup.reach(loginSchema, field) as yup.AnySchema).validate(value);
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     } catch (err: any) {
       setErrors((prev) => ({ ...prev, [field]: err.message }));
     }
   };
-
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,6 +71,7 @@ const FormLogin = () => {
       }
 
       setErrors(fieldErrors);
+      globalOnError("Login gagal");
       console.error("Login failed:", err);
     } finally {
       setLoading(false);
@@ -124,7 +126,7 @@ const FormLogin = () => {
                 toggleMask
                 autoComplete="off"
                 value={password}
-                onBlur={()=> validateField("password", password)}
+                onBlur={() => validateField("password", password)}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <label htmlFor="password">Password</label>
